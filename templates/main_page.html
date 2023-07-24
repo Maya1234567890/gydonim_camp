@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>אתר גדעונים</title>
+    <style>
+        .container {
+         position: relative;
+         width: 50%;
+        }
+        .container:hover .overlay {
+          opacity: 1;
+        }
+        .symbol_image {
+          display: block;
+          width: 100%;
+          height: auto;
+          opacity: 0.6;
+        }
+        .mador_image{
+          display: block;
+          width: 50%;
+          height: auto;
+        }
+        .overlay {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 100%;
+          width: 100%;
+          opacity: 0;
+          transition: .5s ease;
+          background-color: white;
+        }
+        .mador_button {
+          background-color: white;
+          border: none;
+          color: white;
+          font-size: 28px;
+          padding: 20px;
+          background-position: center;
+          align-items : center;
+          width: 200px;
+          transition: all 0.5s;
+          cursor: pointer;
+          margin: 5px;
+
+        }
+        .mador_button span {
+          cursor: pointer;
+          display: inline-block;
+          color: blue;
+          position: relative;
+          transition: 0.5s;
+        }
+
+        .mador_button span:after {
+          content: '\00bb';
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          transition: 0.5s;
+        }
+
+        .mador_button:hover span {
+          padding-right: 5px;
+        }
+
+        .mador_button:hover span:after {
+          opacity: 1;
+        }
+        .symbol_text {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+          background-color: blue;
+          text-shadow: 2px 2px 5px grey;
+        }
+
+        .page_bar {
+          width: 100%;
+          background-color: blue;
+          overflow: auto;
+        }
+        .page_bar a {
+          display: block;
+          float: right;
+          width: 20%;
+          text-align: center;
+          padding: 12px 0;
+          transition: all 0.3s ease;
+          color: white;
+          font-size: 36px;
+        }
+        .page_bar a:hover {
+          background-color: #000;
+        }
+        .active {
+          background-color: #04AA6D;
+        }
+
+        * {box-sizing:border-box}
+        body {font-family: Verdana,sans-serif;margin:0}
+
+        /* Slideshow container */
+        .slideshow-container {
+          max-width: 1000px;
+          position: relative;
+          margin: auto;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          top: 50%;
+          width: auto;
+          padding: 16px;
+          margin-top: -22px;
+          color: white;
+          font-weight: bold;
+          font-size: 18px;
+          transition: 0.6s ease;
+          border-radius: 0 3px 3px 0;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+          right: 0;
+          border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+          background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+        .news_text {
+          color: #f2f2f2;
+          font-size: 15px;
+          padding: 8px 12px;
+          position: absolute;
+          bottom: 8px;
+          width: 100%;
+          text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+          color: #f2f2f2;
+          font-size: 12px;
+          padding: 8px 12px;
+          position: absolute;
+          top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+          cursor:pointer;
+          height: 13px;
+          width: 13px;
+          margin: 0 2px;
+          background-color: #bbb;
+          border-radius: 50%;
+          display: inline-block;
+          transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+          background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+          -webkit-animation-name: fade;
+          -webkit-animation-duration: 1.5s;
+          animation-name: fade;
+          animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+          from {opacity: .4}
+          to {opacity: 1}
+        }
+
+        @keyframes fade {
+          from {opacity: .4}
+          to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+          .slprev, .slnext,.text {font-size: 11px}
+        }
+    </style>
+</head>
+<body style="background-color:white;">
+
+    <div class="page_bar">
+        <a class="active" href="#"><i class="fa fa-home"></i></a>
+        <a href="#"><i class="fa fa-search"></i></a>
+        <a href="#">חדשות</a>
+        <a href="#">אנשים</a>
+        <a href="#">מדורים</a>
+        <a href="#"> מדור מחשוב</a>
+    </div>
+
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div>
+          <img src="static/tester.jpeg" style="width:100%">
+          <div class="news_text">add on click!!</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div>
+          <img src="static/tester.jpeg" style="width:100%">
+          <div class="news_text">add on click</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div>
+          <img src="static/tester.jpeg" style="width:100%">
+          <div class="news_text">add on click!</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+    <script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length} ;
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+    }
+    </script>
+
+    <div class="container">
+        <img src='static/ICT_symbol.png' alt="ICT symbol" class="symbol_image">
+        <div class="symbol_text">על מדורי גדעונים</div>
+        <div class="overlay">
+            <button class="mador_button"><span><img src='static/ICT_symbol.png' class="mador_image"></span></button>
+            <div>שלישות</div>
+        </div>
+    </div>
+
+</body>
+</html>
