@@ -1,15 +1,27 @@
-# library for html & python communication.
+"""
+The web server for the Gydonim camp website
+By: Maya Vaksin
+"""
+
+"""
+Libraries
+"""
+# libraries for html & python communication.
 from flask import Flask, render_template, redirect, url_for, request, flash, jsonify
 import asyncio
 import webbrowser
-#
 # import json
-#
 # import socket
 
+"""
+Main Database
+"""
 app = Flask(__name__, template_folder='templates')
 
 
+"""
+Web Functions
+"""
 @app.route("/", methods=["POST", "GET"])
 def main_page():
     return render_template('main_page.html')
@@ -34,7 +46,6 @@ if __name__ == '__main__':
 
     else:"""
     try:
-        # socket1.run(app)
         app.secret_key = 'super secret key'
         app.config['SESSION_TYPE'] = 'filesystem'
         app.run(port=8000, debug=False, host="0.0.0.0",
