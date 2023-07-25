@@ -9,6 +9,8 @@
         .container {
          position: relative;
          width: 50%;
+         left: 25%;
+
         }
         .container:hover .overlay {
           opacity: 1;
@@ -17,12 +19,7 @@
           display: block;
           width: 100%;
           height: auto;
-          opacity: 0.6;
-        }
-        .mador_image{
-          display: block;
-          width: 50%;
-          height: auto;
+          opacity: 0.3;
         }
         .overlay { /* The overlay animation */
           position: absolute;
@@ -34,21 +31,22 @@
           width: 100%;
           opacity: 0;
           transition: .5s ease;
-          background-color: white;
+          background-color: #cacccc;
+          margin: auto;
         }
         .mador_button {
-          background-color: white;
-          border: none;
-          color: white;
+          background-color: #cacccc;
+          border-style: none;
+          color: #cacccc;
           font-size: 28px;
           padding: 20px;
           background-position: center;
           align-items : center;
-          width: 200px;
+          width: 32%;
           transition: all 0.5s;
           cursor: pointer;
-          margin: 5px;
-
+          margin: auto;
+          postion: relative;
         }
         .mador_button span {
           cursor: pointer;
@@ -56,6 +54,7 @@
           color: blue;
           position: relative;
           transition: 0.5s;
+          text-align: right;
         }
 
         .mador_button span:after {
@@ -64,6 +63,7 @@
           opacity: 0;
           top: 0;
           transition: 0.5s;
+          right: 30px;
         }
 
         .mador_button:hover span {
@@ -78,32 +78,46 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          color: white;
-          background-color: blue;
+          color: #0f4061;
           text-shadow: 2px 2px 5px grey;
+          font-size: 40px;
+        }
+
+        .mador_text {
+          color: black;
+          font-size: 15px;
+          align-items: center;
+          display: flex;
+          justify-content: center;
+        }
+        .mador_image {
+          display: block;
+          width: 50%;
+          height: auto;
         }
 
         /* The navigation bar */
         .page_bar {
           width: 100%;
-          background-color: blue;
+          background-color: #0f4061;
           overflow: auto;
         }
         .page_bar a {
           display: block;
           float: right;
-          width: 20%;
+          width: 15%;
           text-align: center;
-          padding: 12px 0;
+          padding: 10px 0;
           transition: all 0.3s ease;
-          color: white;
-          font-size: 36px;
+          color: #bdc2c9;
+          font-size: 28px;
+          text-decoration: none;
         }
         .page_bar a:hover {
-          background-color: #000;
+          background-color: #0a202e;
         }
-        .active {
-          background-color: #04AA6D;
+        .home_button {
+          background-color: #15699e;
         }
 
         /* The slideshow */
@@ -203,16 +217,16 @@
     </style>
 
 </head>
-<body style="background-color:white;">
+<body style="background-color:#cacccc;">
 
     <div class="page_bar">
-        <a class="active" href="#"><i class="fa fa-home"></i></a>
+        <a class="home_button" href="#"><i class="fa fa-home"></i></a>
         <a href="#"><i class="fa fa-search"></i></a>
         <a href="#">חדשות</a>
         <a href="#">אנשים</a>
         <a href="#">מדורים</a>
         <a href="#"> מדור מחשוב</a>
-    </div>
+    </div><br>
 
     <div class="slideshow-container">
         <div class="mySlides fade">
@@ -232,15 +246,13 @@
         </div>
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
-    </div>
-
-    <br>
+    </div><br>
 
     <div style="text-align:center">
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
-    </div>
+    </div><br>
 
     <script>
     var slideIndex = 1;
@@ -272,11 +284,17 @@
     </script>
 
     <div class="container">
-        <img src='static/ICT_symbol.png' alt="ICT symbol" class="symbol_image">
+        <img src='static/ICT_symbol.png' class="symbol_image">
         <div class="symbol_text">על מדורי גדעונים</div>
         <div class="overlay">
-            <button class="mador_button"><span><img src='static/ICT_symbol.png' class="mador_image"></span></button>
-            <div>שלישות</div>
+            <button class="mador_button"><span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p></button>
+            <button class="mador_button"><span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p></button>
+            <button class="mador_button"><span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p></button>
+            <button class="mador_button"><span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p></button>
+            <button class="mador_button"><span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p></button>
+            <button class="mador_button"><span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p></button>
+
+
         </div>
     </div>
 
