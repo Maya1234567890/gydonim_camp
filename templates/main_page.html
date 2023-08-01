@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>אתר גדעונים</title>
     <style>
+
         /* The mador animation */
         .container {
          position: relative;
@@ -51,7 +52,7 @@
         .mador_button span {
           cursor: pointer;
           display: inline-block;
-          color: blue;
+          color: #0f4061;
           position: relative;
           transition: 0.5s;
           text-align: right;
@@ -98,19 +99,23 @@
 
         /* The navigation bar */
         .page_bar {
+           z-index: 1;
           width: 100%;
           background-color: #0f4061;
           overflow: auto;
         }
         .page_bar a {
           display: block;
-          float: right;
-          width: 15%;
+          float: left;
+          width: 10%;
+          height: 70px;
+          line-height: 40px;
+          align-items: center;
           text-align: center;
           padding: 10px 0;
           transition: all 0.3s ease;
           color: #bdc2c9;
-          font-size: 28px;
+          font-size: 18px;
           text-decoration: none;
         }
         .page_bar a:hover {
@@ -119,13 +124,17 @@
         .home_button {
           background-color: #15699e;
         }
+        .filler {
+          background-color: #cacccc;
+          height: 70px;
+        }
+
 
         /* The slideshow */
         * {box-sizing:border-box}
         body {font-family: Verdana,sans-serif;margin:0}
 
         .slideshow-container {
-          max-width: 1000px;
           position: relative;
           margin: auto;
         }
@@ -214,19 +223,36 @@
         @media only screen and (max-width: 300px) {
           .slprev, .slnext,.text {font-size: 11px}
         }
+
+        /* Page content */
+        .content {
+          padding: 16px;
+        }
+
+        /* The sticky class is added to the navbar with JS when it reaches its scroll position */
+        .sticky {
+          position: fixed;
+          top: 0;
+          width: 100%;
+        }
+
+        /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+        .sticky + .content {
+          padding-top: 60px;
+        }
+
     </style>
 
 </head>
 <body style="background-color:#cacccc;">
 
-    <div class="page_bar">
-        <a class="home_button" href="#"><i class="fa fa-home"></i></a>
-        <a href="#"><i class="fa fa-search"></i></a>
-        <a href="#">חדשות</a>
-        <a href="#">אנשים</a>
-        <a href="#">מדורים</a>
+    <div class="page_bar" id="navbar">
+        <a class="home_button" href="#" style="float: right;">בסיס גדעונים<i class="fa fa-home"></i></a>
         <a href="#"> מדור מחשוב</a>
-    </div><br>
+        <a href="#">מדורים</a>
+        <a href="#">אנשים</a>
+        <a href="#">חדשות</a>
+    </div><div class="filler"></div>
 
     <div class="slideshow-container">
         <div class="mySlides fade">
@@ -297,6 +323,26 @@
 
         </div>
     </div>
+
+    <script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+    </script>
 
 </body>
 </html>
