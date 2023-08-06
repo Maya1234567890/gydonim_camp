@@ -5,6 +5,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>אתר גדעונים</title>
     <style>
+        .info_container {
+          border: 5px outset red;
+          background-color: lightblue;
+          text-align: center;
+
+        }
 
         /* The mador animation */
         .container {
@@ -20,7 +26,7 @@
           display: block;
           width: 100%;
           height: auto;
-          opacity: 0.3;
+          opacity: 0.8;
         }
         .overlay { /* The overlay animation */
           position: absolute;
@@ -74,18 +80,29 @@
         .mador_button:hover span:after {
           opacity: 1;
         }
+        .symbol_text_background {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: rgb(15, 64, 97, 0.6);
+          background-color: rgb(6, 35, 54, 0.8);
+          font-size: 40px;
+          /* Add the blur effect */
+          filter: blur(20px);
+          -webkit-filter: blur(20px);
+        }
         .symbol_text {
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          color: #0f4061;
-          text-shadow: 2px 2px 5px grey;
+          color: #bdc2c9;
           font-size: 40px;
         }
 
         .mador_text {
-          color: black;
+          color: #0f4061;
           font-size: 15px;
           align-items: center;
           display: flex;
@@ -162,7 +179,7 @@
 
         /* On hover, add a black background color with a little bit see-through */
         .prev:hover, .next:hover {
-          background-color: rgba(0,0,0,0.8);
+          background-color: rgb(10, 32, 46, 0.8);
         }
 
         /* Caption text */
@@ -198,7 +215,7 @@
         }
 
         .active, .dot:hover {
-          background-color: #717171;
+          background-color: #15699e;
         }
 
         /* Fading animation */
@@ -309,17 +326,35 @@
     }
     </script>
 
-    <div class="container">
-        <img src='static/ICT_symbol.png' class="symbol_image">
-        <div class="symbol_text">על מדורי גדעונים</div>
-        <div class="overlay">
-            <button class="mador_button"><span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p></button>
-            <button class="mador_button"><span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p></button>
-            <button class="mador_button"><span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p></button>
-            <button class="mador_button"><span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p></button>
-            <button class="mador_button"><span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p></button>
-            <button class="mador_button"><span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p></button>
+    <div class="info_container">
+        דברי ליאב
+    </div>
 
+    <div class="container">
+        <img src='static/pin.png' class="symbol_image">
+        <div class="symbol_text_background">על מדורי גדעונים</div>
+        <div class="symbol_text">על מדורי גדעונים</div>
+        <div class="overlay" id="overlay_div">
+            <script>
+                const x = document.getElementById("overlay_div");
+
+                for (let i = 0; i < 12; i++) {
+                    const y = document.createElement('button');
+                    y.classList.add('mador_button');
+
+                    const z = document.createElement('span');
+                    z.innerHTML = '<span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p>';
+
+                    y.appendChild(z);
+                    x.appendChild(y);
+                }
+            </script>
+            <!--<button class="mador_button">
+                <span style="align-items: center; display: flex; justify-content: center;">
+                    <img src="static/ICT_symbol.png" class="mador_image">
+                </span>
+                <p class="mador_text">שלישות</p>
+            </button>-->
 
         </div>
     </div>
