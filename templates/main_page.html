@@ -14,17 +14,21 @@
 
         /* The mador animation */
         .container {
+         align-items: center;
+         display: flex;
+         justify-content: center;
          position: relative;
-         width: 50%;
-         left: 25%;
+         width: 60%;
+         left: 20%;
 
         }
         .container:hover .overlay {
           opacity: 1;
         }
         .symbol_image {
+
           display: block;
-          width: 100%;
+          width: 85%;
           height: auto;
           opacity: 0.8;
         }
@@ -116,7 +120,7 @@
 
         /* The navigation bar */
         .page_bar {
-           z-index: 1;
+          z-index: 1;
           width: 100%;
           background-color: #0f4061;
           overflow: auto;
@@ -146,29 +150,42 @@
           height: 70px;
         }
 
-
         /* The slideshow */
-        * {box-sizing:border-box}
-        body {font-family: Verdana,sans-serif;margin:0}
-
-        .slideshow-container {
-          position: relative;
-          margin: auto;
+        * {
+          box-sizing: border-box;
         }
 
-        .prev, .next { /* Next & previous buttons */
+        /* Position the image container (needed to position the left and right arrows) */
+        .slideshow_container {
+          position: relative;
+          background-color: black;
+        }
+
+        /* Hide the images by default */
+        .mySlides {
+          display: none;
+        }
+
+        /* Add a pointer when hovering over the thumbnail images */
+        .cursor {
+          cursor: pointer;
+        }
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
           cursor: pointer;
           position: absolute;
-          top: 0;
-          top: 50%;
+          top: 40%;
           width: auto;
           padding: 16px;
-          margin-top: -22px;
+          margin-top: -50px;
           color: white;
           font-weight: bold;
-          font-size: 18px;
-          transition: 0.6s ease;
+          font-size: 20px;
           border-radius: 0 3px 3px 0;
+          user-select: none;
+          -webkit-user-select: none;
         }
 
         /* Position the "next button" to the right */
@@ -178,67 +195,49 @@
         }
 
         /* On hover, add a black background color with a little bit see-through */
-        .prev:hover, .next:hover {
-          background-color: rgb(10, 32, 46, 0.8);
-        }
-
-        /* Caption text */
-        .news_text {
-          color: #f2f2f2;
-          font-size: 15px;
-          padding: 8px 12px;
-          position: absolute;
-          bottom: 8px;
-          width: 100%;
-          text-align: center;
+        .prev:hover,
+        .next:hover {
+          background-color: rgba(0, 0, 0, 0.8);
         }
 
         /* Number text (1/3 etc) */
         .numbertext {
           color: #f2f2f2;
-          font-size: 12px;
+          font-size: 24px;
           padding: 8px 12px;
           position: absolute;
           top: 0;
         }
 
-        /* The dots/bullets/indicators */
-        .dot {
-          cursor:pointer;
-          height: 13px;
-          width: 13px;
-          margin: 0 2px;
-          background-color: #bbb;
-          border-radius: 50%;
-          display: inline-block;
-          transition: background-color 0.6s ease;
+        /* Container for image text */
+        .caption-container {
+          text-align: center;
+          background-color: #222;
+          padding: 2px 16px;
+          color: white;
         }
 
-        .active, .dot:hover {
-          background-color: #15699e;
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+
         }
 
-        /* Fading animation */
-        .fade {
-          -webkit-animation-name: fade;
-          -webkit-animation-duration: 1.5s;
-          animation-name: fade;
-          animation-duration: 1.5s;
+        /* Six columns side by side */
+        .column {
+          float: left;
+          width: 20%;
         }
 
-        @-webkit-keyframes fade {
-          from {opacity: .4}
-          to {opacity: 1}
+        /* Add a transparency effect for thumnbail images */
+        .demo {
+          opacity: 0.6;
         }
 
-        @keyframes fade {
-          from {opacity: .4}
-          to {opacity: 1}
-        }
-
-        /* On smaller screens, decrease text size */
-        @media only screen and (max-width: 300px) {
-          .slprev, .slnext,.text {font-size: 11px}
+        .active,
+        .demo:hover {
+          opacity: 1;
         }
 
         /* Page content */
@@ -261,69 +260,81 @@
     </style>
 
 </head>
-<body style="background-color:#cacccc;">
+<body style="background-color:#cacccc; margin:0;">
 
     <div class="page_bar" id="navbar">
         <a class="home_button" href="#" style="float: right;">בסיס גדעונים<i class="fa fa-home"></i></a>
         <a href="#"> מדור מחשוב</a>
         <a href="#">מדורים</a>
-        <a href="#">אנשים</a>
+        <a href="#">סגל</a>
         <a href="#">חדשות</a>
     </div><div class="filler"></div>
 
-    <div class="slideshow-container">
-        <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
+    <div class="slideshow_container">
+        <div class="mySlides">
+            <div class="numbertext">1 / 6</div>
             <img src="static/tester.jpeg" style="width:100%">
-            <div class="news_text">add on click!!</div>
         </div>
-        <div class="mySlides fade">
-            <div class="numbertext">2 / 3</div>
+
+        <div class="mySlides">
+            <div class="numbertext">2 / 6</div>
             <img src="static/tester.jpeg" style="width:100%">
-            <div class="news_text">add on click</div>
         </div>
-        <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
+
+        <div class="mySlides">
+            <div class="numbertext">3 / 6</div>
             <img src="static/tester.jpeg" style="width:100%">
-            <div class="news_text">add on click!</div>
         </div>
+
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
-    </div><br>
 
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-    </div><br>
+        <div class="caption-container">
+            <p id="caption"></p>
+        </div>
+
+        <div class="row">
+            <div class="column">
+              <img class="demo cursor" src="static/tester.jpeg" style="width:100%" onclick="currentSlide(1)" alt="כותרת 1">
+            </div>
+            <div class="column">
+              <img class="demo cursor" src="static/tester.jpeg" style="width:100%" onclick="currentSlide(2)" alt="כותרת 2">
+            </div>
+            <div class="column">
+              <img class="demo cursor" src="static/tester.jpeg" style="width:100%" onclick="currentSlide(3)" alt="כותרת 3">
+            </div>
+        </div>
+    </div>
 
     <script>
-    var slideIndex = 1;
-    showSlides(slideIndex);
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
+        function plusSlides(n) {
+        showSlides(slideIndex += n);
+        }
 
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
-    }
+        function currentSlide(n) {
+        showSlides(slideIndex = n);
+        }
 
-    function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("dot");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length} ;
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex-1].style.display = "block";
-      dots[slideIndex-1].className += " active";
-    }
+        function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("demo");
+        let captionText = document.getElementById("caption");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        captionText.innerHTML = dots[slideIndex-1].alt;
+        }
     </script>
 
     <div class="info_container">
@@ -337,13 +348,15 @@
         <div class="overlay" id="overlay_div">
             <script>
                 const x = document.getElementById("overlay_div");
+                const MadorNamesList = {{mador_list | tojson | safe}};
+                const MadorImagesList = {{mador_photo_list | tojson | safe}};
 
-                for (let i = 0; i < 12; i++) {
+                for (let i = 0; i < MadorNamesList.length; i++) {
                     const y = document.createElement('button');
                     y.classList.add('mador_button');
 
                     const z = document.createElement('span');
-                    z.innerHTML = '<span style="align-items: center; display: flex; justify-content: center;"><img src="static/ICT_symbol.png" class="mador_image"></span><p class="mador_text">שלישות</p>';
+                    z.innerHTML = '<span style="align-items: center; display: flex; justify-content: center;"><img src="static/' + MadorImagesList[i] + '" class="mador_image"></span><p class="mador_text">' + MadorNamesList[i] +'</p>';
 
                     y.appendChild(z);
                     x.appendChild(y);

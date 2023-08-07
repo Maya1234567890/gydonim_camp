@@ -18,13 +18,19 @@ Main Database
 """
 app = Flask(__name__, template_folder='templates')
 
+# take from a different file?
+mador_list = ["מחשוב", "לוגיסטיקה", "מרפאה", "רס״ר", "מב״ס", "מספרה", "נשקייה", "מטבח", "רבנות"]
+mador_photo_list = ["it_symbol.png", "logic_symbol.png", "clinic_symbol.png", "sergeant_symbol.png", "command_symbol.png",
+                    "hair_symbol.png", "weapon_symbol.png", "kitchen_symbol.png", "jewish_symbol.png"]
+mador_app_route_var_list = []
+
 
 """
 Web Functions
 """
 @app.route("/", methods=["POST", "GET"])
 def main_page():
-    return render_template('main_page.html')
+    return render_template('main_page.html', mador_list=mador_list, mador_photo_list=mador_photo_list)
 
 
 if __name__ == '__main__':
