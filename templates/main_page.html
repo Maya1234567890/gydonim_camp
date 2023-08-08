@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>אתר גדעונים</title>
+    <link rel="icon" type="image/x-icon" href="static/ICT_symbol.png">
     <style>
         .info_container {
           border: 5px outset red;
@@ -286,6 +287,40 @@
           padding: 10px;
         }
 
+        /* Three columns side by side */
+        .contact_column {
+          float: left;
+          width: 25%;
+          margin-bottom: 16px;
+          padding: 0 8px;
+        }
+        /* Add some shadows to create a card effect */
+        .contact_card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+        /* Some left and right padding inside the container */
+        .contact_card_info {
+          padding: 0 16px;
+        }
+        .contact_card_info_title {
+          color: grey;
+        }
+        .contact_card_info_button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 8px;
+          color: white;
+          background-color: #000;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+        }
+
+        .contact_card_info_button:hover {
+          background-color: #555;
+        }
+
     </style>
 
 </head>
@@ -406,7 +441,18 @@
                 ScrollContainer.appendChild(y);
             }
         </script>
-        <img src="static/placeholder.jpeg">
+        <div class="contact_column">
+            <div class="contact_card">
+              <img src="static/placeholder.jpeg" style="width:100%">
+              <div class="contact_card_info">
+                <h2>Jane Doe</h2>
+                <p class="contact_card_info_title">CEO &amp; Founder</p>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                <p>example@example.com</p>
+                <p><button class="contact_card_info_button">Contact</button></p>
+              </div>
+            </div>
+        </div>
         <img src="static/placeholder.jpeg">
         <img src="static/placeholder.jpeg">
         <img src="static/placeholder.jpeg">
