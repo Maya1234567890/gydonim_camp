@@ -213,7 +213,11 @@
           background-color: #222;
           padding: 2px 16px;
           color: white;
+          width: 100%;
+          bottom: 200px;
+          position: absolute;
         }
+
         .row {
           align-items: center;
           display: flex;
@@ -230,6 +234,7 @@
         /* three columns side by side */
         .column {
           width: 20%;
+          margin: 0px 5px 0px 5px;
         }
 
         /* Add a transparency effect for thumnbail images */
@@ -259,6 +264,28 @@
           padding-top: 60px;
         }
 
+        .myProgress {
+          width: 100%;
+          background-color: grey;
+        }
+
+        .myBar {
+          width: 1%;
+          height: 10px;
+          background-color: blue;
+        }
+
+        .scroll-container {
+          background-color: #333;
+          overflow: auto;
+          white-space: nowrap;
+          padding: 10px;
+        }
+
+        scroll-container img {
+          padding: 10px;
+        }
+
     </style>
 
 </head>
@@ -272,21 +299,22 @@
         <a href="#">חדשות</a>
     </div><div class="filler"></div>
 
-    <div class="slideshow_container">
-        <div class="mySlides">
-            <div class="numbertext">1 / 6</div>
-            <img src="static/tester.jpeg" style="width:100%">
-        </div>
+    <div id="SlideshowContainer" class="slideshow_container">
 
-        <div class="mySlides">
-            <div class="numbertext">2 / 6</div>
-            <img src="static/tester.jpeg" style="width:100%">
-        </div>
+        <script>
+            const SlideshowContainer = document.getElementById("SlideshowContainer");
 
-        <div class="mySlides">
-            <div class="numbertext">3 / 6</div>
-            <img src="static/tester.jpeg" style="width:100%">
-        </div>
+            for (let i = 1; i < 4; i++) {
+                var y = document.createElement('div');
+                y.classList.add('mySlides');
+
+                var z = document.createElement('div');
+                z.innerHTML = '<div class="numbertext">' + i + ' / 3</div><img src="static/tester.jpeg" style="width:100%">';
+
+                y.appendChild(z);
+                SlideshowContainer.appendChild(y);
+                }
+        </script>
 
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
@@ -295,22 +323,43 @@
             <p id="caption"></p>
         </div>
 
-        <div class="row">
-            <div class="column">
-              <img class="demo cursor" src="static/tester.jpeg" style="width:100%" onclick="currentSlide(1)" alt="כותרת 1">
-            </div>
-            <div class="column">
-              <img class="demo cursor" src="static/tester.jpeg" style="width:100%" onclick="currentSlide(2)" alt="כותרת 2">
-            </div>
-            <div class="column">
-              <img class="demo cursor" src="static/tester.jpeg" style="width:100%" onclick="currentSlide(3)" alt="כותרת 3">
-            </div>
-        </div>
+        <div id="PhotosRow" class="row"></div>
+
+        <script>
+            const PhotosRow = document.getElementById("PhotosRow");
+
+            for (let i = 1; i < 4; i++) {
+                var y = document.createElement('div');
+                y.classList.add('column');
+
+                var z = document.createElement('div');
+                z.innerHTML = '<img class="demo cursor" src="static/tester.jpeg" style="width:100%" onclick="currentSlide(' + i + ')" alt="'+ i +'כותרת "><div class="myProgress"><div class="myBar"  id="myBar' + i + '"></div></div>';
+
+                y.appendChild(z);
+                PhotosRow.appendChild(y);
+                }
+        </script>
     </div>
+
 
     <script>
         let slideIndex = 1;
         showSlides(slideIndex);
+        var id; var iz;
+
+        function move(n) {
+            var elem = document.getElementById("myBar" + n);
+            var width = 1;
+            id = setInterval(frame, 50);
+            function frame() {
+              if (width >= 100) {
+                clearInterval(id);
+              } else {
+                width++;
+                elem.style.width = width + "%";
+              }
+            }
+        }
 
         function plusSlides(n) {
         showSlides(slideIndex += n);
@@ -321,12 +370,18 @@
         }
 
         function showSlides(n) {
+            clearTimeout(iz);
             let i;
             let slides = document.getElementsByClassName("mySlides");
             let dots = document.getElementsByClassName("demo");
             let captionText = document.getElementById("caption");
             if (n > slides.length) {slideIndex = 1}
             if (n < 1) {slideIndex = slides.length}
+            for (i = 1; i < 4; i++) {
+                var elem = document.getElementById("myBar" + i);
+                elem.style.width = 1 + "%";
+                clearInterval(id);
+            }
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
@@ -337,13 +392,28 @@
             dots[slideIndex-1].className += " active";
             captionText.innerHTML = dots[slideIndex-1].alt;
 
-            setTimeout(plusSlides, 5000, 1);
+            iz = setTimeout(plusSlides, 5000, 1);
+            move(slideIndex);
         }
+    </script><div class="filler"></div>
 
-    </script>
-
-    <div class="info_container">
-        דברי ליאב
+    <div id="ScrollContainer" class="scroll-container">
+        <script>
+            const ScrollContainer = document.getElementById("ScrollContainer");
+            for (let i = 0; i < 15; i++) {
+                var y = document.createElement('div');
+                y.innerHtml = '<div><img src="static/placeholder.jpeg"></div>';
+                ScrollContainer.appendChild(y);
+            }
+        </script>
+        <img src="static/placeholder.jpeg">
+        <img src="static/placeholder.jpeg">
+        <img src="static/placeholder.jpeg">
+        <img src="static/placeholder.jpeg">
+        <img src="static/placeholder.jpeg">
+        <img src="static/placeholder.jpeg">
+        <img src="static/placeholder.jpeg">
+        <img src="static/placeholder.jpeg">
     </div>
 
     <div class="container">
