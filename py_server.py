@@ -19,11 +19,11 @@ Main Database
 app = Flask(__name__, template_folder='templates')
 
 # take from a different file?
-mador_list = ["מחשוב", "לוגיסטיקה", "מרפאה", "רס״ר", "מב״ס", "מספרה", "נשקייה", "מטבח", "רבנות", "שלישות", "אבטחה",
-              "אישורים"]
+mador_list = ["מחשוב", "לוגיסטיקה", "מרפאה", "רס״ר", "מב״ס", "מספרה", "נשקייה", "מטבח", "רבנות", "שלישות",
+              "אבטחה ואישורים", "אירועים"]
 mador_photo_list = ["it_symbol.png", "logic_symbol.png", "clinic_symbol.png", "sergeant_symbol.png", "command_symbol.png",
                     "hair_symbol.png", "weapon_symbol.png", "kitchen_symbol.png", "jewish_symbol.png",
-                    "adjutancy_symbol.png", "security_symbol.png", "approval_symbol.png"]
+                    "adjutancy_symbol.png", "security_symbol.png", "event_symbol.png"]
 mador_app_route_var_list = []
 
 
