@@ -12,14 +12,23 @@
           text-align: center;
 
         }
-
+        #background-container{
+            position: absolute;
+            width: 100%;
+            height: 640px;
+            top: 0
+            z-index: 0;
+            background-color: #343434;
+        }
         /* The mador animation */
         .container {
+         background-color: #343434;
          align-items: center;
          display: flex;
          justify-content: center;
          position: relative;
          width: 80%;
+         height: 640px;
          left: 10%;
 
         }
@@ -42,11 +51,11 @@
           width: 100%;
           opacity: 0;
           transition: .5s ease;
-          background-color: #cacccc;
+          background-color: white;
           margin: auto;
         }
         .mador_button {
-          background-color: #cacccc;
+          background-color: white;
           border-style: none;
           color: #cacccc;
           font-size: 28px;
@@ -122,32 +131,44 @@
         .page_bar {
           z-index: 1;
           width: 100%;
-          background-color: #0f4061;
+          background-color: black;
           overflow: auto;
         }
         .page_bar a {
           display: block;
           float: left;
           width: 10%;
-          height: 70px;
-          line-height: 40px;
+          height: 50px;
+          line-height: 20px;
           align-items: center;
           text-align: center;
           padding: 10px 0;
-          transition: all 0.3s ease;
-          color: #bdc2c9;
+          color: white;
           font-size: 18px;
+          display: inline-block;
+          position: relative;
           text-decoration: none;
         }
-        .page_bar a:hover {
-          background-color: #0a202e;
+
+        .page_bar a::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          transform: scaleX(0);
+          height: 5px;
+          bottom: 0;
+          left: 0;
+          background-color: #0087ca;
+          transform-origin: bottom right;
+          transition: transform 0.25s ease-out;
         }
-        .home_button {
-          background-color: #15699e;
+        .page_bar a:hover::after {
+          transform: scaleX(1);
+          transform-origin: bottom left;
         }
         .filler {
-          background-color: #cacccc;
-          height: 70px;
+          background-color: black;
+          height: 50px;
         }
 
         /* The slideshow */
@@ -215,12 +236,13 @@
           background-color: #222;
           padding: 2px 16px;
           color: white;
-          width: 100%;
           position: absolute;
-          bottom: 0;
+          left: 50%;
+          top: 50%;
           color: white;
-          text-align: center;
           font-size: 30px;
+          transform: translate(-50%,-50%);
+         -ms-transform: translate(-50%,-50%)
         }
 
         .row {
@@ -242,27 +264,91 @@
           margin: 0px 5px 0px 5px;
         }
         .column-caption{
-          position: absolute;
           font-size: 30px;
-          bottom: 0;
+          top: 50%;
+          left: 50%;
           transition: .5s ease;
-          opacity: 0;
           text-align: center;
           background-color: #222;
           color: white;
           padding: 2px 16px;
           width: 25%;
+          height: 100%;
+        }
+
+        @property --rotate {
+          syntax: "<angle>";
+          initial-value: 132deg;
+          inherits: false;
         }
 
         /* Add a transparency effect for thumnbail images */
         .demo {
           opacity: 0.6;
+          background-color: black;
+          position: relative;
+          border-radius: 6px;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          display: flex;
+          font-size: 1.5em;
+          color: rgb(88 199 250 / 0%);
+          cursor: pointer;
+          border-radius: 6px;
         }
 
         .active,
         .demo:hover {
           opacity: 1;
-          .column-caption {opacity: 1}
+          color: rgb(88 199 250 / 100%);
+          transition: color 1s;
+        }
+        .demo:hover:before, .demo:hover:after {
+          animation: none;
+          opacity: 0;
+        }
+        .demo::before {
+          content: "";
+          width: 104%;
+          height: 102%;
+          border-radius: 8px;
+          background-image: linear-gradient(
+            var(--rotate)
+            , #5ddcff, #3c67e3 43%, #4e00c2);
+            position: absolute;
+            z-index: -1;
+            top: -1%;
+            left: -2%;
+            animation: spin 2.5s linear infinite;
+        }
+        .demo::after {
+          position: absolute;
+          content: "";
+          top: calc(var(--card-height) / 6);
+          left: 0;
+          right: 0;
+          z-index: -1;
+          height: 100%;
+          width: 100%;
+          margin: 0 auto;
+          transform: scale(0.8);
+          filter: blur(calc(var(--card-height) / 6));
+          background-image: linear-gradient(
+            var(--rotate)
+            , #5ddcff, #3c67e3 43%, #4e00c2);
+            opacity: 1;
+          transition: opacity .5s;
+          animation: spin 2.5s linear infinite;
+        }
+
+        @keyframes spin {
+          0% {
+            --rotate: 0deg;
+          }
+          100% {
+            --rotate: 360deg;
+          }
         }
 
         /* Page content */
@@ -291,6 +377,7 @@
           width: 1%;
           height: 10px;
           background-color: blue;
+          bottom: 0;
         }
 
         .contact_card_info {
@@ -368,13 +455,21 @@
           transform: rotateY(180deg);
         }
 
+        .main-image{
+          width: 100%;
+          background-image:
+          linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)), url('static/tester.jpeg');
+          background-size: cover;
+          color: white;
+        }
     </style>
 
 </head>
-<body style="background-color:#cacccc; margin:0;">
+<body style="background-color: black; margin:0;">
 
     <div class="page_bar" id="navbar">
-        <a class="home_button" href="#" style="float: right;">בסיס גדעונים<i class="fa fa-home"></i></a>
+        <i style="float: right; height: 40px;"><img style="height: 90%;" src="static/ICT_symbol.png"></i>
+        <a href="#" style="float: right;">בסיס גדעונים</a>
         <a href="#"> מדור מחשוב</a>
         <a href="#">מדורים</a>
         <a href="#">סגל</a>
@@ -391,7 +486,7 @@
                 y.classList.add('mySlides');
 
                 var z = document.createElement('div');
-                z.innerHTML = '<div class="numbertext">' + i + ' / 3</div><img src="static/tester.jpeg" style="width:100%">';
+                z.innerHTML = '<div class="numbertext">' + i + ' / 3</div><img src="static/tester.jpeg" class="main-image">';
 
                 var n = document.createElement('div');
                 n.innerHTML = '<div class="caption-container"><p id="caption' + i + '"></p></div>';
@@ -417,10 +512,10 @@
                 var z = document.createElement('div');
                 z.innerHTML = '<div class="myProgress"><div class="myBar" id="myBar' + i + '"></div></div>';
                 var d = document.createElement('div');
-                d.innerHTML = '<div class="demo cursor"><img src="static/tester.jpeg" style="width:100%" onclick="currentSlide(' + i + ')"><div class="column-caption" onclick="currentSlide(' + i + ')">hello</div></div>';
+                d.innerHTML = '<div class="demo cursor"><div class="column-caption" onclick="currentSlide(' + i + ')">hello</div></div>';
 
-                y.appendChild(z);
                 y.appendChild(d);
+                y.appendChild(z);
                 PhotosRow.appendChild(y);
                 }
         </script>
@@ -480,9 +575,9 @@
             iz = setTimeout(plusSlides, 5000, 1);
             move(slideIndex);
         }
-    </script><div class="filler"></div>
+    </script>
 
-    <div class="container">
+    <div id="background-container"></div><div id="right"></div><div class="container">
         <img src='static/pin.png' class="symbol_image">
         <div class="symbol_text_background">על מדורי גדעונים</div>
         <div class="symbol_text">על מדורי גדעונים</div>
