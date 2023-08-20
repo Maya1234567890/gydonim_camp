@@ -6,12 +6,6 @@
     <title>אתר גדעונים</title>
     <link rel="icon" type="image/x-icon" href="static/ICT_symbol.png">
     <style>
-        .info_container {
-          border: 5px outset red;
-          background-color: lightblue;
-          text-align: center;
-
-        }
         #background-container{
             position: absolute;
             width: 100%;
@@ -22,7 +16,7 @@
         }
         /* The mador animation */
         .container {
-         background-color: #343434;
+         background-color: transparent;
          align-items: center;
          display: flex;
          justify-content: center;
@@ -51,11 +45,11 @@
           width: 100%;
           opacity: 0;
           transition: .5s ease;
-          background-color: white;
+          background-color: #343434;
           margin: auto;
         }
         .mador_button {
-          background-color: white;
+          background-color: #343434;
           border-style: none;
           color: #cacccc;
           font-size: 28px;
@@ -71,7 +65,7 @@
         .mador_button span {
           cursor: pointer;
           display: inline-block;
-          color: #0f4061;
+          color: white;
           position: relative;
           transition: 0.5s;
           text-align: right;
@@ -98,8 +92,8 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          color: rgb(15, 64, 97, 0.6);
-          background-color: rgb(6, 35, 54, 0.8);
+          color: white;
+          background-color: rgb(41, 39, 34, 0.8);
           font-size: 50px;
           /* Add the blur effect */
           filter: blur(20px);
@@ -110,12 +104,12 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          color: #bdc2c9;
+          color: white;
           font-size: 50px;
         }
 
         .mador_text {
-          color: #0f4061;
+          color: white;
           font-size: 15px;
           align-items: center;
           display: flex;
@@ -438,6 +432,9 @@
         .contact-card-cover {
           background-color: #cccccc;
           color: #111111;
+          bottom: 0;
+          left: 0;
+          right: 0;
         }
 
         .contact_card {
@@ -574,7 +571,8 @@
         }
     </script>
 
-    <div id="background-container"></div><div id="right"></div><div class="container">
+    <div class="filler"></div><div id="background-container"></div>
+    <div id="right"></div><div class="container">
         <img src='static/pin.png' class="symbol_image">
         <div class="symbol_text_background">על מדורי גדעונים</div>
         <div class="symbol_text">על מדורי גדעונים</div>
@@ -606,7 +604,7 @@
     </div><div class="filler"></div>
 
     <div id="ScrollContainer" class="scroll-container">
-        <div class="contact-container">
+        <!--div class="contact-container">
             <div class="contact_column">
                 <div class="contact-card-cover">
                     <img style="width: 100%; height: auto;" src="static/placeholder.jpeg">
@@ -615,7 +613,7 @@
                     <div class="contact_card_info"><h2>Jane Doe</h2><p class="contact_card_info_title">CEO &amp; Founder</p><p>Some text that describes me lorem ipsum ipsum lorem.</p><p>example@example.com</p><p><button class="contact_card_info_button">Contact</button></p></div>
                 </div>
             </div>
-        </div>
+        </div-->
 
         <script>
             const ScrollContainer = document.getElementById("ScrollContainer");
@@ -643,134 +641,7 @@
             }
         </script>
 
-        <div class="contact-container">
-            <div class="contact_column">
-                <div class="contact-card-cover">
-                    <img style="width: 100%; height: auto;" src="static/placeholder.jpeg">
-                </div>
-                <div class="contact_card">
-                    <div class="contact_card_info">
-                        <h2>Jane Doe</h2>
-                        <p class="contact_card_info_title">CEO &amp; Founder</p>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p>example@example.com</p>
-                        <p><button class="contact_card_info_button">Contact</button></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="contact-container">
-            <div class="contact_column">
-                <div class="contact-card-cover">
-                    <img style="width: 100%; height: auto;" src="static/placeholder.jpeg">
-                </div>
-                <div class="contact_card">
-                    <div class="contact_card_info">
-                        <h2>Jane Doe</h2>
-                        <p class="contact_card_info_title">CEO &amp; Founder</p>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p>example@example.com</p>
-                        <p><button class="contact_card_info_button">Contact</button></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="contact-container">
-            <div class="contact_column">
-                <div class="contact-card-cover">
-                    <img style="width: 100%; height: auto;" src="static/placeholder.jpeg">
-                </div>
-                <div class="contact_card">
-                    <div class="contact_card_info">
-                        <h2>Jane Doe</h2>
-                        <p class="contact_card_info_title">CEO &amp; Founder</p>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p>example@example.com</p>
-                        <p><button class="contact_card_info_button">Contact</button></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="contact-container">
-            <div class="contact_column">
-                <div class="contact-card-cover">
-                    <img style="width: 100%; height: auto;" src="static/placeholder.jpeg">
-                </div>
-                <div class="contact_card">
-                    <div class="contact_card_info">
-                        <h2>Jane Doe</h2>
-                        <p class="contact_card_info_title">CEO &amp; Founder</p>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p>example@example.com</p>
-                        <p><button class="contact_card_info_button">Contact</button></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="contact-container">
-            <div class="contact_column">
-                <div class="contact-card-cover">
-                    <img style="width: 100%; height: auto;" src="static/placeholder.jpeg">
-                </div>
-                <div class="contact_card">
-                    <div class="contact_card_info">
-                        <h2>Jane Doe</h2>
-                        <p class="contact_card_info_title">CEO &amp; Founder</p>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p>example@example.com</p>
-                        <p><button class="contact_card_info_button">Contact</button></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="contact-container">
-            <div class="contact_column">
-                <div class="contact-card-cover">
-                    <img style="width: 100%; height: auto;" src="static/placeholder.jpeg">
-                </div>
-                <div class="contact_card">
-                    <div class="contact_card_info">
-                        <h2>Jane Doe</h2>
-                        <p class="contact_card_info_title">CEO &amp; Founder</p>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p>example@example.com</p>
-                        <p><button class="contact_card_info_button">Contact</button></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="contact-container">
-            <div class="contact_column">
-                <div class="contact-card-cover">
-                    <img style="width: 100%; height: auto;" src="static/placeholder.jpeg">
-                </div>
-                <div class="contact_card">
-                    <div class="contact_card_info">
-                        <h2>Jane Doe</h2>
-                        <p class="contact_card_info_title">CEO &amp; Founder</p>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p>example@example.com</p>
-                        <p><button class="contact_card_info_button">Contact</button></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="contact-container">
-            <div class="contact_column">
-                <div class="contact-card-cover">
-                    <img style="width: 100%; height: auto;" src="static/placeholder.jpeg">
-                </div>
-                <div class="contact_card">
-                    <div class="contact_card_info">
-                        <h2>Jane Doe</h2>
-                        <p class="contact_card_info_title">CEO &amp; Founder</p>
-                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p>example@example.com</p>
-                        <p><button class="contact_card_info_button">Contact</button></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div><div class="filler"></div>
     <button id="slideLeft" type="button">Slide left</button>
     <button id="slideRight" type="button">Slide right</button>
