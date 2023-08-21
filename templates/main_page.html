@@ -58,7 +58,7 @@
           opacity: 1;
         }
         .mador_button {
-          top: 10%;
+          top: 7%;
           background-color: #343434;
           border-style: none;
           padding: 20px;
@@ -69,19 +69,30 @@
           cursor: pointer;
           position: relative;
         }
+        .mador_text {
+          color: white;
+          font-size: 20px;
+          display: flex;
+          justify-content: center;
+        }
+        .mador_image {
+          display: block;
+          width: 50%;
+          height: auto;
+        }
         /* the <span> for the mador buttons */
         .mador_button span {
           cursor: pointer;
-          display: inline-block;
-          font-size: 28px;
+          font-size: 32px;
           color: white;
           position: relative;
           transition: 0.5s;
-          text-align: right;
+          display: flex;
+          justify-content: center;
         }
         /* the >> for the mador buttons.
         This content is inside the <span> and comes after what we already defined in the <span>.
-        This is needed because of the position of >> */
+        This is needed because of the position of >> and the position of the image in the <span>. */
         .mador_button span::after {
           content: '\00bb'; /* the >> symbol */
           position: absolute;
@@ -92,28 +103,15 @@
         }
         /* The animation going slightly right */
         .mador_button:hover span {
-          padding-right: 5px;
+          padding-right: 1vw;
         }
         /* showing the >> */
-        .mador_button:hover span:after {
+        .mador_button:hover span::after {
           opacity: 1;
         }
 
 
-        .mador_text {
-          color: white;
-          font-size: 15px;
-          align-items: center;
-          display: flex;
-          justify-content: center;
-        }
-        .mador_image {
-          display: block;
-          width: 50%;
-          height: auto;
-        }
-
-        /* The navigation bar */
+        /* The Navigation Bar */
         .page_bar {
           z-index: 1;
           width: 100%;
@@ -571,27 +569,34 @@
         <div class="mador-cover-image-text">על מדורי גדעונים</div>
         <div class="madors-display-container" id="madors-display-container">
             <script>
-                const x = document.getElementById("madors-display-container");
+                const MadorDisplayCont = document.getElementById("madors-display-container");
                 const MadorNamesList = {{mador_list | tojson | safe}};
                 const MadorImagesList = {{mador_photo_list | tojson | safe}};
 
                 for (let i = 0; i < MadorNamesList.length; i++) {
-                    const y = document.createElement('button');
+                    var y = document.createElement('button');
                     y.classList.add('mador_button');
 
-                    const z = document.createElement('span');
-                    z.innerHTML = '<span style="align-items: center; display: flex; justify-content: center;"><img src="static/' + MadorImagesList[i] + '" class="mador_image"></span><p class="mador_text">' + MadorNamesList[i] +'</p>';
+                    var z = document.createElement('span');
+                    let e = document.createElement('img');
+                    e.src = 'static/' + MadorImagesList[i];
+                    e.classList.add('mador_image');
+                    z.appendChild(e);
+
+                    var x = document.createElement('p');
+                    x.innerHTML = '<p class="mador_text">' + MadorNamesList[i] +'</p>';
 
                     y.appendChild(z);
-                    x.appendChild(y);
+                    y.appendChild(x);
+                    MadorDisplayCont.appendChild(y);
                 }
             </script>
-            <!--<button class="mador_button">
-                <span style="align-items: center; display: flex; justify-content: center;">
+            <!--button class="mador_button">
+                <span>
                     <img src="static/ICT_symbol.png" class="mador_image">
                 </span>
                 <p class="mador_text">שלישות</p>
-            </button>-->
+            </button--!>
 
         </div>
     </div><div class="filler"></div>
