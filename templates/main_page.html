@@ -2,111 +2,103 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>אתר גדעונים</title>
     <link rel="icon" type="image/x-icon" href="static/ICT_symbol.png">
     <style>
-        #background-container{
-            position: absolute;
-            width: 100%;
-            height: 640px;
-            top: 0
-            z-index: 0;
-            background-color: #343434;
+        /* The Mador Animation */
+        /* The mador cover image */
+        .mador-cover-image-container {
+          background-color: #343434;
+          display: flex;
+          justify-content: center;
+          position: relative;
+          width: 100%;
         }
-        /* The mador animation */
-        .container {
-         background-color: transparent;
-         align-items: center;
-         display: flex;
-         justify-content: center;
-         position: relative;
-         width: 80%;
-         height: 640px;
-         left: 10%;
-
-        }
-        .container:hover .overlay {
-          opacity: 1;
-        }
-        .symbol_image {
+        .mador-cover-image {
           display: block;
-          width: 62%;
+          width: 60%;
           height: auto;
           opacity: 0.8;
         }
-        .overlay { /* The overlay animation */
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 100%;
-          width: 100%;
-          opacity: 0;
-          transition: .5s ease;
-          background-color: #343434;
-          margin: auto;
-        }
-        .mador_button {
-          background-color: #343434;
-          border-style: none;
-          color: #cacccc;
-          font-size: 28px;
-          padding: 20px;
-          background-position: center;
-          align-items : center;
-          width: 25%;
-          transition: all 0.5s;
-          cursor: pointer;
-          margin: auto;
-          postion: relative;
-        }
-        .mador_button span {
-          cursor: pointer;
-          display: inline-block;
-          color: white;
-          position: relative;
-          transition: 0.5s;
-          text-align: right;
-        }
-
-        .mador_button span:after {
-          content: '\00bb';
-          position: absolute;
-          opacity: 0;
-          top: 0;
-          transition: 0.5s;
-          right: 30px;
-        }
-
-        .mador_button:hover span {
-          padding-right: 5px;
-        }
-
-        .mador_button:hover span:after {
-          opacity: 1;
-        }
-        .symbol_text_background {
+        /* the shadow for the mador cover image text */
+        .mador-cover-image-text-background {
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
           color: white;
           background-color: rgb(41, 39, 34, 0.8);
-          font-size: 50px;
+          font-size: 5vw;
           /* Add the blur effect */
           filter: blur(20px);
           -webkit-filter: blur(20px);
         }
-        .symbol_text {
+        /* the mador cover image text */
+        .mador-cover-image-text {
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
           color: white;
-          font-size: 50px;
+          font-size: 5vw;
         }
+        /* The madors display */
+        .madors-display-container {
+          overflow: auto;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          height: auto;
+          width: 90%;
+          opacity: 0; /* without hovering the madors are hidden */
+          transition: .5s ease;
+          background-color: #343434;
+        }
+        .mador-cover-image-container:hover .madors-display-container {
+          opacity: 1;
+        }
+        .mador_button {
+          top: 10%;
+          background-color: #343434;
+          border-style: none;
+          padding: 20px;
+          background-position: center;
+          align-items: center;
+          width: 25%;
+          transition: all 0.5s;
+          cursor: pointer;
+          position: relative;
+        }
+        /* the <span> for the mador buttons */
+        .mador_button span {
+          cursor: pointer;
+          display: inline-block;
+          font-size: 28px;
+          color: white;
+          position: relative;
+          transition: 0.5s;
+          text-align: right;
+        }
+        /* the >> for the mador buttons.
+        This content is inside the <span> and comes after what we already defined in the <span>.
+        This is needed because of the position of >> */
+        .mador_button span::after {
+          content: '\00bb'; /* the >> symbol */
+          position: absolute;
+          opacity: 0; /* hidden until we hover */
+          top: 0;
+          transition: 0.5s;
+          right: 30px;
+        }
+        /* The animation going slightly right */
+        .mador_button:hover span {
+          padding-right: 5px;
+        }
+        /* showing the >> */
+        .mador_button:hover span:after {
+          opacity: 1;
+        }
+
 
         .mador_text {
           color: white;
@@ -435,6 +427,7 @@
           bottom: 0;
           left: 0;
           right: 0;
+          top: 0;
         }
 
         .contact_card {
@@ -571,14 +564,14 @@
         }
     </script>
 
-    <div class="filler"></div><div id="background-container"></div>
-    <div id="right"></div><div class="container">
-        <img src='static/pin.png' class="symbol_image">
-        <div class="symbol_text_background">על מדורי גדעונים</div>
-        <div class="symbol_text">על מדורי גדעונים</div>
-        <div class="overlay" id="overlay_div">
+    <div class="filler"></div>
+    <div class="mador-cover-image-container">
+        <img src='static/pin.png' class="mador-cover-image">
+        <div class="mador-cover-image-text-background">על מדורי גדעונים</div>
+        <div class="mador-cover-image-text">על מדורי גדעונים</div>
+        <div class="madors-display-container" id="madors-display-container">
             <script>
-                const x = document.getElementById("overlay_div");
+                const x = document.getElementById("madors-display-container");
                 const MadorNamesList = {{mador_list | tojson | safe}};
                 const MadorImagesList = {{mador_photo_list | tojson | safe}};
 
@@ -643,19 +636,8 @@
 
 
     </div><div class="filler"></div>
-    <button id="slideLeft" type="button">Slide left</button>
-    <button id="slideRight" type="button">Slide right</button>
-    <script>
-        const buttonRight = document.getElementById('slideRight');
-        const buttonLeft = document.getElementById('slideLeft');
 
-        buttonRight.onclick = function () {
-          document.getElementById('ScrollContainer').scrollLeft += 1520;
-        };
-        buttonLeft.onclick = function () {
-          document.getElementById('ScrollContainer').scrollLeft -= 1520;
-        };
-    </script>
+
 
 
     <script>
