@@ -5,6 +5,12 @@
     <title>אתר גדעונים</title>
     <link rel="icon" type="image/x-icon" href="static/ICT_symbol.png">
     <style>
+        /* Filler for the page flow */
+        .filler {
+          background-color: black;
+          height: 5.5vh;
+        }
+
         /* The Mador Animation */
         /* The mador cover image */
         .mador-cover-image-container {
@@ -83,7 +89,7 @@
         /* the <span> for the mador buttons */
         .mador_button span {
           cursor: pointer;
-          font-size: 32px;
+          font-size: 40px;
           color: white;
           position: relative;
           transition: 0.5s;
@@ -99,11 +105,11 @@
           opacity: 0; /* hidden until we hover */
           top: 0;
           transition: 0.5s;
-          right: 30px;
+          right: 25px;
         }
         /* The animation going slightly right */
         .mador_button:hover span {
-          padding-right: 1vw;
+          padding-right: 0.5vw;
         }
         /* showing the >> */
         .mador_button:hover span::after {
@@ -112,50 +118,51 @@
 
 
         /* The Navigation Bar */
-        .page_bar {
-          z-index: 1;
-          width: 100%;
+        .navigation-bar {
+          z-index: 1; /* the bar will always show on top */
           background-color: black;
           overflow: auto;
+          position: fixed;
+          top: 0;
+          width: 100%;
         }
-        .page_bar a {
-          display: block;
+        /* the navigation bar options */
+        .navigation-bar a {
           float: left;
-          width: 10%;
-          height: 50px;
-          line-height: 20px;
+          width: 10vw;
+          height: 5.5vh;
           align-items: center;
           text-align: center;
-          padding: 10px 0;
+          justify-content: center;
+          padding: 0.9vh 0;
           color: white;
-          font-size: 18px;
+          font-size: 1.2vw;
           display: inline-block;
           position: relative;
           text-decoration: none;
         }
-
-        .page_bar a::after {
+        /* The navigation bar options animation */
+        .navigation-bar a::after {
           content: '';
           position: absolute;
           width: 100%;
+          /* when the client isn't hovering over the element the element isn't seen horizontally.
+           by the end of a hover the element goes back to not being seen horizontally. */
           transform: scaleX(0);
-          height: 5px;
+          height: 0.5vh;
           bottom: 0;
           left: 0;
           background-color: #0087ca;
-          transform-origin: bottom right;
+          transform-origin: bottom right; /* the end of the animation, makes a smooth finish */
           transition: transform 0.25s ease-out;
         }
-        .page_bar a:hover::after {
-          transform: scaleX(1);
-          transform-origin: bottom left;
-        }
-        .filler {
-          background-color: black;
-          height: 50px;
+        /* implementing the animation upon hovering */
+        .navigation-bar a:hover::after {
+          transform: scaleX(1); /* resizing the element horizontally */
+          transform-origin: bottom left; /* the start of the animation */
         }
 
-        /* The slideshow */
+        /* The articles slideshow */
         * {
           box-sizing: border-box;
         }
@@ -452,8 +459,8 @@
 </head>
 <body style="background-color: black; margin:0;">
 
-    <div class="page_bar" id="navbar">
-        <i style="float: right; height: 40px;"><img style="height: 90%;" src="static/ICT_symbol.png"></i>
+    <div class="navigation-bar" id="navbar">
+        <i style="float: right; height: 5.5vh;"><img style="height: 90%;" src="static/ICT_symbol.png"></i>
         <a href="#" style="float: right;">בסיס גדעונים</a>
         <a href="#"> מדור מחשוב</a>
         <a href="#">מדורים</a>
@@ -462,7 +469,6 @@
     </div><div class="filler"></div>
 
     <div id="SlideshowContainer" class="slideshow_container">
-
         <script>
             const SlideshowContainer = document.getElementById("SlideshowContainer");
 
@@ -562,7 +568,7 @@
         }
     </script>
 
-    <div class="filler"></div>
+    
     <div class="mador-cover-image-container">
         <img src='static/pin.png' class="mador-cover-image">
         <div class="mador-cover-image-text-background">על מדורי גדעונים</div>
@@ -591,13 +597,6 @@
                     MadorDisplayCont.appendChild(y);
                 }
             </script>
-            <!--button class="mador_button">
-                <span>
-                    <img src="static/ICT_symbol.png" class="mador_image">
-                </span>
-                <p class="mador_text">שלישות</p>
-            </button--!>
-
         </div>
     </div><div class="filler"></div>
 
@@ -642,28 +641,6 @@
 
     </div><div class="filler"></div>
 
-
-
-
-    <script>
-    // When the user scrolls the page, execute myFunction
-    window.onscroll = function() {myFunction()};
-
-    // Get the navbar
-    var navbar = document.getElementById("navbar");
-
-    // Get the offset position of the navbar
-    var sticky = navbar.offsetTop;
-
-    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-    function myFunction() {
-      if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")
-      } else {
-        navbar.classList.remove("sticky");
-      }
-    }
-    </script>
 
 </body>
 </html>
