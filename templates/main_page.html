@@ -10,6 +10,10 @@
           background-color: black;
           height: 5.5vh;
         }
+        /* defines how the width and height of all the elements are calculated */
+        * {
+          box-sizing: border-box;
+        }
 
         /* The Mador Animation */
         /* The mador cover image */
@@ -163,29 +167,18 @@
         }
 
         /* The articles slideshow */
-        * {
-          box-sizing: border-box;
-        }
-
         /* Position the image container (needed to position the left and right arrows) */
-        .slideshow_container {
+        .slideshow-container {
           position: relative;
         }
-
-        /* Hide the images by default */
-        .mySlides {
+        /* The main image container for the slideshow. Hide the images by default */
+        .image-slides {
           position: relative;
           display: none;
         }
-
-        /* Add a pointer when hovering over the thumbnail images */
-        .cursor {
-          cursor: pointer;
-        }
-
         /* Next & previous buttons */
-        .prev,
-        .next {
+        .prev-button,
+        .next-button {
           cursor: pointer;
           position: absolute;
           top: 40%;
@@ -194,139 +187,68 @@
           margin-top: -50px;
           color: white;
           font-weight: bold;
-          font-size: 20px;
+          font-size: 2vw;
           border-radius: 0 3px 3px 0;
-          user-select: none;
-          -webkit-user-select: none;
         }
-
         /* Position the "next button" to the right */
-        .next {
+        .next-button {
           right: 0;
           border-radius: 3px 0 0 3px;
         }
-
         /* On hover, add a black background color with a little bit see-through */
-        .prev:hover,
-        .next:hover {
+        .prev-button:hover,
+        .next-button:hover {
           background-color: rgba(0, 0, 0, 0.8);
         }
-
         /* Number text (1/3 etc) */
-        .numbertext {
-          color: #f2f2f2;
-          font-size: 24px;
+        .numbers-text {
+          color: white;
+          font-size: 2vw;
           padding: 8px 12px;
           position: absolute;
           top: 0;
         }
-
-        /* Container for image text */
+        /* The main slideshow image */
+        .main-image{
+          background: linear-gradient(to bottom, transparent 0%, black 100%), url('static/tester1.jpeg');
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          height: 65vh;
+          width: 100%;
+        }
+        /* the slideshow's main image text */
         .caption-container {
-          text-align: center;
-          padding: 2px 16px;
+          text-shadow: 2px 2px 4px #000000;
           color: white;
+          font-size: 4.5vw;
           position: absolute;
           left: 50%;
           top: 50%;
-          color: white;
-          font-size: 45px;
           transform: translate(-50%,-50%);
          -ms-transform: translate(-50%,-50%)
-          background-color: black;
         }
-
-        .row {
-          align-items: center;
+        /* the container for the slideshow options */
+        .slideshow-options-container {
           display: flex;
           justify-content: center;
           position: relative;
         }
-
-        .row:after {
-          content: "";
-          display: table;
-          clear: both;
-          border-spacing: 0 15px;
-        }
-
-        /* three columns side by side */
-        .column {
+        /* four columns side by side */
+        .option-column {
           width: 25%;
-          margin: 5px 5px 5px 5px;
+          margin: 0 5px 7px 0;
           position: relative;
-          border-radius: 6px;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
           display: inline;
-          color: rgb(88 199 250 / 0%);
-          cursor: pointer;
           background-color: black;
         }
-        .column-caption{
-          font-size: 24px;
-          padding-top: 25px;
-          text-align: center;
-          bottom: 0;
-          color: white;
-          width: 100%;
-          height: 100%;
-          position: relative;
-        }
-
+        /* defining a var for the spinning effect of the glowing bar */
         @property --rotate {
-          syntax: "<angle>";
-          initial-value: 132deg;
+          syntax: "<angle>"; /* this makes the var represent an angle value */
+          initial-value: 132deg; /* starting spin degree */
           inherits: false;
         }
-
-        /* Add a transparency effect for thumnbail images */
-        .demo {
-          opacity: 0.4;
-          transition: .5s ease;
-        }
-
-        .active,
-        .demo:hover {
-          opacity: 1;
-        }
-        .column:hover {
-          color: rgb(88 199 250 / 100%);
-          transition: color 1s;
-        }
-        .column:hover:before, .column:hover:after {
-          opacity: 1;
-        }
-        .column::before {
-          content: "";
-          width: 100%;
-          height: 118%;
-          background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
-          position: absolute;
-          z-index: -1;
-          top: 15%;
-          left: 0;
-          animation: spin 2.5s linear infinite;
-        }
-        .column::after {
-          position: absolute;
-          content: "";
-          top: 50vh;
-          left: 0;
-          right: 0;
-          z-index: -1;
-          height: 100%;
-          width: 100%;
-          margin: 0 auto;
-          transform: scale(0.8);
-          filter: blur(50vh);
-          background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
-          opacity: 1;
-          transition: opacity .5s;
-          animation: spin 2.5s linear infinite;
-        }
-
+        /* controls the intermediate steps in a CSS animation sequence (spin) by defining styles for keyframes
+        along the animation sequence */
         @keyframes spin {
           0% {
             --rotate: 0deg;
@@ -335,36 +257,51 @@
             --rotate: 360deg;
           }
         }
-
-        /* Page content */
-        .content {
-          padding: 16px;
-        }
-
-        /* The sticky class is added to the navbar with JS when it reaches its scroll position */
-        .sticky {
-          position: fixed;
-          top: 0;
+        /* the glowing bars */
+        .option-column::before {
+          content: "";
           width: 100%;
+          height: 1.8vh; /* the size of the glowing bar */
+          background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+          position: absolute;
+          z-index: -1; /* makes the glowing bar stay behind the slideshow options */
+          top: 100%; /* for the glowing bar to start just under the slideshow options */
+          left: 0;
+          animation: spin 2.5s linear infinite;
         }
-
-        /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-        .sticky + .content {
-          padding-top: 60px;
+        /* Add a transparency effect for the options */
+        .option-content {
+          opacity: 0.4;
+          transition: .5s ease;
+          cursor: pointer;
         }
-
-        .myProgress {
+        .option-caption{
+          font-size: 2vw;
+          padding-top: 2vw;
+          text-align: center;
+          bottom: 0;
+          color: white;
+          width: 100%;
+          height: 100%;
+          position: relative;
+        }
+        /* the progress bar for the automatic slideshow movement */
+        .progress-bar-container {
           width: 100%;
           background-color: #2d4059;
         }
-
-        .myBar {
-          width: 1%;
-          height: 8px;
+        .progress-bar {
+          width: 1%; /* starting progress */
+          height: 0.9vh;
           background-color: #0087ca;
           bottom: 0;
         }
+        .active-option,
+        .option-content:hover {
+          opacity: 1;
+        }
 
+        /* contact */
         .contact_card_info {
           padding: 0 16px;
         }
@@ -444,21 +381,12 @@
           transform: rotateY(180deg);
         }
 
-        .main-image{
-          top: 0;
-          position: absolute;
-          width: 100%;
-          background: linear-gradient(to bottom, transparent 0%, black 100%);
-          height: 550px;
-          text-align: center;
-          color: #fff;
-
-        }
     </style>
 
 </head>
 <body style="background-color: black; margin:0;">
 
+    <!-- The navigation bar -->
     <div class="navigation-bar" id="navbar">
         <i style="float: right; height: 5.5vh;"><img style="height: 90%;" src="static/ICT_symbol.png"></i>
         <a href="#" style="float: right;">בסיס גדעונים</a>
@@ -468,58 +396,63 @@
         <a href="#">חדשות</a>
     </div><div class="filler"></div>
 
-    <div id="SlideshowContainer" class="slideshow_container">
+    <!-- The articles slideshow -->
+    <div id="SlideshowContainer" class="slideshow-container">
         <script>
             const SlideshowContainer = document.getElementById("SlideshowContainer");
 
             for (let i = 1; i < 5; i++) {
                 var y = document.createElement('div');
-                y.classList.add('mySlides');
+                y.classList.add('image-slides');
 
+                // the option numbers + the main image + the main image filter
                 var z = document.createElement('div');
-                z.innerHTML = '<div class="numbertext">' + i + ' / 4</div><img style="width:100%;" src="static/tester.jpeg"><div class="main-image"></div>';
+                z.innerHTML = '<div class="numbers-text">' + i + ' / 4</div>';
+
+                var b = document.createElement('div');
+                b.innerHTML = '<div class="main-image"></div>'
 
                 var n = document.createElement('div');
                 n.innerHTML = '<div class="caption-container"><p id="caption' + i + '"></p></div>';
 
                 y.appendChild(z);
+                y.appendChild(b);
                 y.appendChild(n);
                 SlideshowContainer.appendChild(y);
                 }
         </script>
 
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
+        <a class="prev-button" onclick="plusSlides(-1)">❮</a>
+        <a class="next-button" onclick="plusSlides(1)">❯</a>
 
-        <div id="PhotosRow" class="row"></div>
-
+        <div id="OptionsContainer" class="slideshow-options-container"></div>
         <script>
-            const PhotosRow = document.getElementById("PhotosRow");
+            const OptionsContainer = document.getElementById("OptionsContainer");
 
             for (let i = 1; i < 5; i++) {
                 var y = document.createElement('div');
-                y.classList.add('column');
+                y.classList.add('option-column');
 
                 var z = document.createElement('div');
-                z.innerHTML = '<div class="myProgress"><div class="myBar" id="myBar' + i + '"></div></div>';
+                z.innerHTML = '<div class="progress-bar-container"><div class="progress-bar" id="progress-bar' + i + '"></div></div>';
                 var d = document.createElement('div');
-                d.innerHTML = '<div class="demo cursor"><div class="column-caption" onclick="currentSlide(' + i + ')">hello</div></div>';
+                d.innerHTML = '<div class="option-content" onclick="currentSlide(' + i + ')"><div class="option-caption">hello</div></div>';
 
                 y.appendChild(d);
                 d.appendChild(z);
-                PhotosRow.appendChild(y);
+                OptionsContainer.appendChild(y);
                 }
         </script>
     </div>
 
-
+    <!-- The slideshow functionalities -->
     <script>
         let slideIndex = 1;
         showSlides(slideIndex);
         var id; var iz;
 
         function move(n) {
-            var elem = document.getElementById("myBar" + n);
+            var elem = document.getElementById("progress-bar" + n);
             var width = 1;
             id = setInterval(frame, 50);
             function frame() {
@@ -543,13 +476,13 @@
         function showSlides(n) {
             clearTimeout(iz);
             let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("demo");
+            let slides = document.getElementsByClassName("image-slides");
+            let dots = document.getElementsByClassName("option-content");
             if (n > slides.length) {slideIndex = 1}
             if (n < 1) {slideIndex = slides.length}
             let captionText = document.getElementById("caption" + slideIndex);
             for (i = 1; i < 4; i++) {
-                var elem = document.getElementById("myBar" + i);
+                var elem = document.getElementById("progress-bar" + i);
                 elem.style.width = 1 + "%";
                 clearInterval(id);
             }
@@ -557,10 +490,10 @@
                 slides[i].style.display = "none";
             }
             for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
+                dots[i].className = dots[i].className.replace(" active-option", "");
             }
             slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " active";
+            dots[slideIndex-1].className += " active-option";
             captionText.innerHTML = dots[slideIndex-1].alt;
 
             iz = setTimeout(plusSlides, 5000, 1);
@@ -568,7 +501,7 @@
         }
     </script>
 
-    
+
     <div class="mador-cover-image-container">
         <img src='static/pin.png' class="mador-cover-image">
         <div class="mador-cover-image-text-background">על מדורי גדעונים</div>
