@@ -1,0 +1,361 @@
+/* defines how the width and height of all the elements are calculated */
+body {
+ background-color: black;
+  margin:0;
+  box-sizing: border-box;
+}
+/* The Mador Animation */
+/* The mador cover image */
+.mador-cover-image-container {
+  background-color: #343434;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.mador-cover-image {
+  display: block;
+  width: 60%;
+  height: auto;
+  opacity: 0.8;
+}
+/* the shadow for the mador cover image text */
+.mador-cover-image-text-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgb(41, 39, 34, 0.8);
+  font-size: 5vw;
+  /* Add the blur effect */
+  filter: blur(20px);
+  -webkit-filter: blur(20px);
+}
+/* the mador cover image text */
+.mador-cover-image-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 5vw;
+}
+/* The madors display */
+.madors-display-container {
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: auto;
+  width: 90%;
+  opacity: 0; /* without hovering the madors are hidden */
+  transition: .5s ease;
+  background-color: #343434;
+}
+.mador-cover-image-container:hover .madors-display-container {
+  opacity: 1;
+}
+.mador_button {
+  top: 7%;
+  background-color: #343434;
+  border-style: none;
+  padding: 20px;
+  background-position: center;
+  align-items: center;
+  width: 25%;
+  transition: all 0.5s;
+  cursor: pointer;
+  position: relative;
+}
+.mador_text {
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+.mador_image {
+  display: block;
+  width: 50%;
+  height: auto;
+}
+/* the <span> for the mador buttons */
+.mador_button span {
+  cursor: pointer;
+  font-size: 40px;
+  color: white;
+  position: relative;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+}
+/* the >> for the mador buttons.
+This content is inside the <span> and comes after what we already defined in the <span>.
+This is needed because of the position of >> and the position of the image in the <span>. */
+.mador_button span::after {
+  content: '\00bb'; /* the >> symbol */
+  position: absolute;
+  opacity: 0; /* hidden until we hover */
+  top: 0;
+  transition: 0.5s;
+  right: 25px;
+}
+/* The animation going slightly right */
+.mador_button:hover span {
+  padding-right: 0.5vw;
+}
+/* showing the >> */
+.mador_button:hover span::after {
+  opacity: 1;
+}
+
+/* The Navigation Bar */
+.navigation-bar {
+  z-index: 1; /* the bar will always show on top */
+  background-color: black;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+/* the navigation bar options */
+.navigation-bar a {
+  float: left;
+  width: 10vw;
+  height: 2.25vh;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 1.15vh 0;
+  color: white;
+  font-size: 1.2vw;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+}
+/* The navigation bar options animation */
+.navigation-bar a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  /* when the client isn't hovering over the element the element isn't seen horizontally.
+   by the end of a hover the element goes back to not being seen horizontally. */
+  transform: scaleX(0);
+  height: 0.5vh;
+  top: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right; /* the end of the animation, makes a smooth finish */
+  transition: transform 0.25s ease-out;
+}
+/* implementing the animation upon hovering */
+.navigation-bar a:hover::after {
+  transform: scaleX(1); /* resizing the element horizontally */
+  transform-origin: bottom left; /* the start of the animation */
+}
+
+/* The articles slideshow */
+/* Position the image container (needed to position the left and right arrows) */
+.slideshow-container {
+  position: relative;
+}
+/* The main image container for the slideshow. Hide the images by default */
+.image-slides {
+  position: relative;
+  display: none;
+}
+/* Next & previous buttons */
+.prev-button,
+.next-button {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 2vw;
+  border-radius: 0 3px 3px 0;
+}
+/* Position the "next button" to the right */
+.next-button {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+/* On hover, add a black background color with a little bit see-through */
+.prev-button:hover,
+.next-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+/* Number text (1/3 etc) */
+.numbers-text {
+  color: white;
+  font-size: 2vw;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+/* The main slideshow image */
+.main-image{
+
+}
+/* the slideshow's main image text */
+.caption-container {
+  text-shadow: 2px 2px 4px #000000;
+  color: white;
+  font-size: 4.5vw;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+ -ms-transform: translate(-50%,-50%)
+}
+/* the container for the slideshow options */
+.slideshow-options-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+/* four columns side by side */
+.option-column {
+  width: 25%;
+  margin: 0 5px 7px 0;
+  position: relative;
+  display: inline;
+  background-color: black;
+}
+/* defining a var for the spinning effect of the glowing bar */
+@property --rotate {
+  syntax: "<angle>"; /* this makes the var represent an angle value */
+  initial-value: 132deg; /* starting spin degree */
+  inherits: false;
+}
+/* controls the intermediate steps in a CSS animation sequence (spin) by defining styles for keyframes
+along the animation sequence */
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+/* the glowing bars */
+.option-column::before {
+  content: "";
+  width: 100%;
+  height: 1.8vh; /* the size of the glowing bar */
+  background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  position: absolute;
+  z-index: -1; /* makes the glowing bar stay behind the slideshow options */
+  top: 100%; /* for the glowing bar to start just under the slideshow options */
+  left: 0;
+  animation: spin 2.5s linear infinite;
+}
+/* Add a transparency effect for the options */
+.option-content {
+  opacity: 0.4;
+  transition: .5s ease;
+  cursor: pointer;
+}
+.option-caption{
+  font-size: 2vw;
+  padding-top: 2vw;
+  text-align: center;
+  bottom: 0;
+  color: white;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+/* the progress bar for the automatic slideshow movement */
+.progress-bar-container {
+  width: 100%;
+  background-color: #2d4059;
+}
+.progress-bar {
+  width: 1%; /* starting progress */
+  height: 0.9vh;
+  background-color: #0087ca;
+  bottom: 0;
+}
+.active-option,
+.option-content:hover {
+  opacity: 1;
+}
+
+/* the people contacts scroll bar */
+/* A line of contact cards and contact card covers */
+.contacts-scroll-container {
+  background-color: transparent;
+  overflow: scroll;
+  white-space: nowrap;
+  padding: 1vh;
+  height: auto;
+}
+/* placement and sizing settings for the contact card and their covers */
+.full-contact-container-settings {
+  padding: 1vw;
+  display: inline-block;
+  width: 23%;
+  height: 28vw;
+  perspective: 1000px; /* added for a 3D effect */
+}
+/* the container for the contact card and its cover */
+.full-contact-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d; /* the flip animation */
+}
+.full-contact-container-settings:hover .full-contact-container {
+  transform: rotateY(180deg);
+}
+/* the two sides of the contact cards */
+.contact-card-cover,
+.contact-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* The mirror image of all the contact card elements is hidden */
+}
+.contact-card-cover img {
+  width: 100%;
+  height: 100%;
+}
+.contact-card {
+  background-color: white;
+  text-align: center;
+  white-space: pre-line;
+  transform: rotateY(180deg); /* the backside. It should always be one flip ahead from the cover */
+}
+/* container for the contact card text */
+.contact-card-info {
+  padding: 0 1.6vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.contact-card-info p {
+  font-size: 1.4vw;
+}
+.contact-card-info-button {
+  border: none;
+  outline: 0;
+  padding: 0.8vh;
+  color: white;
+  background-color: black;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.4vw;
+}
+
+.contact-card-info-button:hover {
+  background-color: #555;
+}
+
