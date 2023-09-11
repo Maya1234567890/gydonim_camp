@@ -309,8 +309,8 @@
         .full-contact-container-settings {
           padding: 1vw;
           display: inline-block;
-          width: 25vw;
-          height: 46vh;
+          width: 25%;
+          height: 30vw;
           perspective: 1000px; /* added for a 3D effect */
         }
         /* the container for the contact card and its cover */
@@ -350,14 +350,10 @@
           transform: translate(-50%, -50%);
           position: absolute;
         }
-        .contact-card-info_title {
-          color: grey;
-        }
         .contact-card-info p {
-          font-size: 1.7vw;
+          font-size: 1.4vw;
         }
-
-        .contact-card-info_button {
+        .contact-card-info-button {
           border: none;
           outline: 0;
           padding: 0.8vh;
@@ -366,9 +362,10 @@
           text-align: center;
           cursor: pointer;
           width: 100%;
+          font-size: 1.4vw;
         }
 
-        .contact-card-info_button:hover {
+        .contact-card-info-button:hover {
           background-color: #555;
         }
 
@@ -531,7 +528,7 @@
                     <img style="width: 100%; height: auto;" src="static/placeholder.jpeg">
                 </div>
                 <div class="contact-card">
-                    <div class="contact-card-info"><h2>Jane Doe</h2><p class="contact-card-info_title">CEO &amp; Founder</p><p>Some text that describes me lorem ipsum ipsum lorem.</p><p>example@example.com</p><p><button class="contact-card-info_button">Contact</button></p></div>
+                    <div class="contact-card-info"><h2>Jane Doe</h2><p class="contact-card-info_title">CEO &amp; Founder</p><p>Some text that describes me lorem ipsum ipsum lorem.</p><p>example@example.com</p><p><button class="contact-card-info-button">Contact</button></p></div>
                 </div>
             </div>
         </div-->
@@ -552,7 +549,7 @@
                 var back = document.createElement('div');
                 back.classList.add('contact-card');
                 var backContent = document.createElement('div');
-                backContent.innerHTML = '<div class="contact-card-info"><p>Jane Doe</p><p class="contact-card-info_title">CEO &amp; Founder</p><p>Some text that describes me lorem ipsum ipsum lorem.</p><p>example@example.com</p><p><button class="contact-card-info_button">Contact</button></p></div>';
+                backContent.innerHTML = '<div class="contact-card-info"><p>Jane Doe</p><p style="color: grey;">CEO &amp; Founder</p><p>Some text that describes me lorem ipsum ipsum lorem.</p><p>example@example.com</p><p><button class="contact-card-info-button">Contact</button></p></div>';
 
                 back.appendChild(backContent);
                 ContactColumn.appendChild(front);
