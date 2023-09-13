@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>אתר גדעונים</title>
+    <link rel="stylesheet" type="text/css" href="static/css_files/universal_styles.css">
+    <link rel="stylesheet" type="text/css" href="static/css_files/main_page_styles.css">
+    <link rel="icon" type="image/x-icon" href="static/ICT_symbol.png">
+</head>
+<body>
+    <!-- The navigation bar -->
+    <div class="navigation-bar" id="navbar">
+        <i style="float: right; height: 5.5vh;"><img style="height: 90%;" src="static/ICT_symbol.png"></i>
+        <a href="#" style="float: right;">בסיס גדעונים</a>
+        <a href="#"> מדור מחשוב</a>
+        <a href="#">מדורים</a>
+        <a href="#">סגל</a>
+        <a href="#">חדשות</a>
+    </div><div style="background-color: transparent; height: 5.5vh;"></div>
+
+    <!-- The people's scrollable contact cards -->
+    <div id="ScrollContainer" class="contacts-scroll-container" style="white-space: normal;">
+        <script>
+            const ScrollContainer = document.getElementById("ScrollContainer");
+
+            for (let i = 1; i < 20; i++) {
+                var ContactContainer = document.createElement('div');
+                ContactContainer.classList.add('full-contact-container-settings');
+
+                var ContactColumn = document.createElement('div');
+                ContactColumn.classList.add('full-contact-container');
+
+                var front = document.createElement('div');
+                front.innerHTML = '<div class="contact-card-cover"><img src="static/placeholder.jpeg"></div>';
+
+                var back = document.createElement('div');
+                back.classList.add('contact-card');
+                var backContent = document.createElement('div');
+                backContent.innerHTML = '<div class="contact-card-info"><p>Jane Doe</p><p style="color: grey;">CEO &amp; Founder</p><p>Some text that describes me lorem ipsum ipsum lorem.</p><p>example@example.com</p><p><button class="contact-card-info-button">Contact</button></p></div>';
+
+                back.appendChild(backContent);
+                ContactColumn.appendChild(front);
+                ContactColumn.appendChild(back);
+                ContactContainer.appendChild(ContactColumn);
+                ScrollContainer.appendChild(ContactContainer);
+            }
+        </script>
+    </div>
+<body>
+
+</html>

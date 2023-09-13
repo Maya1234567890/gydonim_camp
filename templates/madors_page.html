@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>אתר גדעונים</title>
+    <link rel="stylesheet" type="text/css" href="static/css_files/main_page_styles.css">
+    <link rel="stylesheet" type="text/css" href="static/css_files/universal_styles.css">
+    <link rel="icon" type="image/x-icon" href="static/ICT_symbol.png">
+    <style>
+        iframe[iframetag] {
+          border: none;
+        }
+    </style>
+</head>
+<body>
+    <!--<div w3-include-html="base_page.html"></div>
+    <script>
+        function addHTML() {
+          var el, i, domEl, fileName, xmlHttp;
+
+          el = document.getElementByTagName("*");
+          for (i=0; i<el.length; i++) {
+            domEl = el[i];
+            fileName = domEl.getAttribute("w3-include-html");
+            if (fileName) {
+              xmlHttp = new XMLHttpRequest();
+              xmlHttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                  if (this.status == 200) {
+                    domEl.innerHTML = this.responseText;
+                  }
+                  if (this.status == 400) {
+                    domEl.innerHTML = "Page not found";
+                  }
+                  domEl.removeAttribute("w3-include-html");
+                  addHTML();
+                }
+              }
+              xmlHTTP.open("GET", fulename, true);
+              xmlHTTP.send();
+            }
+          }
+        }
+          w3.includeHTML();
+    </script>-->
+
+    <div id="iframeDiv">
+        <iframe src="static/base_page.html" iframetag></iframe>
+    </div>
+
+    <div class="madors-display-container" id="madors-display-container"
+         style="opacity: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 100%; width: 100%;
+         background-color: transparent;">
+        <script>
+            const MadorDisplayCont = document.getElementById("madors-display-container");
+            const MadorList = {{mador_list | tojson | safe}};
+            for (let i = 0; i < MadorList.length; i++) {
+                var y = document.createElement('button');
+                y.classList.add('mador_button');
+                y["style"] = "background-color: transparent;"
+
+                var z = document.createElement('span');
+                let e = document.createElement('img');
+                e.src = 'static/' + MadorList[i][1] + '.png';
+                e.classList.add('mador_image');
+                z.appendChild(e);
+
+                var x = document.createElement('p');
+                x.innerHTML = '<p class="mador_text">' + MadorList[i][0] +'</p>';
+
+                y.appendChild(z);
+                y.appendChild(x);
+                MadorDisplayCont.appendChild(y);
+            }
+        </script>
+    </div>
+
+</body>
+</html>

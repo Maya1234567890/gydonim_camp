@@ -1,6 +1,6 @@
 """
 The web server for the Gydonim camp website
-By: Maya Vaksin
+By, Maya Vaksin
 """
 
 """
@@ -10,6 +10,7 @@ Libraries
 from flask import Flask, render_template, redirect, url_for, request, flash, jsonify
 import asyncio
 import webbrowser
+
 # import json
 # import socket
 
@@ -19,20 +20,31 @@ Main Database
 app = Flask(__name__, template_folder='templates')
 
 # take from a different file?
-mador_list = ["מחשוב", "לוגיסטיקה", "מרפאה", "רס״ר", "מב״ס", "מספרה", "נשקייה", "מטבח", "רבנות", "שלישות",
-              "אבטחה ואישורים", "אירועים"]
-mador_photo_list = ["it_symbol.png", "logic_symbol.png", "clinic_symbol.png", "sergeant_symbol.png", "command_symbol.png",
-                    "hair_symbol.png", "weapon_symbol.png", "kitchen_symbol.png", "jewish_symbol.png",
-                    "adjutancy_symbol.png", "security_symbol.png", "event_symbol.png"]
-mador_app_route_var_list = []
-
+mador_list = [["מחשוב", "it_symbol"], ["לוגיסטיקה", "logic_symbol"], ["מרפאה", "clinic_symbol"],
+              ["רס״ר", "sergeant_symbol"],
+              ["מב״ס", "command_symbol"], ["מספרה", "hair_symbol"], ["נשקייה", "weapon_symbol"],
+              ["מטבח", "kitchen_symbol"],
+              ["רבנות", "jewish_symbol"], ["שלישות", "adjutancy_symbol"], ["אבטחה ואישורים", "security_symbol"],
+              ["אירועים", "event_symbol"]]
 
 """
 Web Functions
 """
+
+
 @app.route("/", methods=["POST", "GET"])
 def main_page():
-    return render_template('main_page.html', mador_list=mador_list, mador_photo_list=mador_photo_list)
+    return render_template('main_page.html', mador_list=mador_list)
+
+
+@app.route("/madors", methods=['GET'])
+def madors_page():
+    return render_template('madors_page.html', mador_list=mador_list)
+
+
+@app.route("/people", methods=['GET'])
+def people_page():
+    return render_template('people_page.html')
 
 
 if __name__ == '__main__':

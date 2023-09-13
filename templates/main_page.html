@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>אתר גדעונים</title>
-    <link rel="stylesheet" type="text/css" href="static/css_files/styles.css">
+    <link rel="stylesheet" type="text/css" href="static/css_files/main_page_styles.css">
+    <link rel="stylesheet" type="text/css" href="static/css_files/universal_styles.css">
     <link rel="icon" type="image/x-icon" href="static/ICT_symbol.png">
 </head>
 <body>
@@ -12,8 +13,8 @@
         <i style="float: right; height: 5.5vh;"><img style="height: 90%;" src="static/ICT_symbol.png"></i>
         <a href="#" style="float: right;">בסיס גדעונים</a>
         <a href="#"> מדור מחשוב</a>
-        <a href="#">מדורים</a>
-        <a href="#">סגל</a>
+        <a href="madors" type="submit">מדורים</a>
+        <a href="people" type="submit">סגל</a>
         <a href="#">חדשות</a>
     </div><div style="background-color: transparent; height: 5.5vh;"></div>
 
@@ -31,8 +32,8 @@
                 z.innerHTML = '<div class="numbers-text">' + i + ' / 4</div>';
 
                 var b = document.createElement('div');
-                var bStyle = "background: linear-gradient(to bottom, transparent 0%, black 100%), url('static/tester1.jpeg'); background-repeat: no-repeat; background-size: 100% 100%; height: 65vh; width: 100%;";
-                b.innerHTML = '<div style="' + bStyle + '" class="main-image"></div>';
+                var bStyle = "background: linear-gradient(to bottom, transparent 0%, black 100%), url('static/tester.jpeg'); background-repeat: no-repeat; background-size: 100% 100%; height: 65vh; width: 100%;";
+                b.innerHTML = '<div style="' + bStyle + '"></div>';
 
                 var n = document.createElement('div');
                 n.innerHTML = '<div class="caption-container"><p id="caption' + i + '"></p></div>';
@@ -132,21 +133,19 @@
         <div class="madors-display-container" id="madors-display-container">
             <script>
                 const MadorDisplayCont = document.getElementById("madors-display-container");
-                const MadorNamesList = {{mador_list | tojson | safe}};
-                const MadorImagesList = {{mador_photo_list | tojson | safe}};
-
-                for (let i = 0; i < MadorNamesList.length; i++) {
+                const MadorList = {{mador_list | tojson | safe}};
+                for (let i = 0; i < MadorList.length; i++) {
                     var y = document.createElement('button');
                     y.classList.add('mador_button');
 
                     var z = document.createElement('span');
                     let e = document.createElement('img');
-                    e.src = 'static/' + MadorImagesList[i];
+                    e.src = 'static/' + MadorList[i][1] + '.png';
                     e.classList.add('mador_image');
                     z.appendChild(e);
 
                     var x = document.createElement('p');
-                    x.innerHTML = '<p class="mador_text">' + MadorNamesList[i] +'</p>';
+                    x.innerHTML = '<p class="mador_text">' + MadorList[i][0] +'</p>';
 
                     y.appendChild(z);
                     y.appendChild(x);
