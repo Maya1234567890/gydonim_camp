@@ -9,12 +9,20 @@
 <body>
     <!-- The navigation bar -->
     <div class="navigation-bar" id="navbar">
-        <i style="float: right; height: 5.5vh;"><img style="height: 90%;" src="ICT_symbol.png"></i>
+        <input id="navbar-link" type="hidden" value="">
+        <i style="float: right; height: 100vh;"><img style="height: 90%;" src="ICT_symbol.png"></i>
         <a href="#" type="submit" style="float: right;">בסיס גדעונים</a>
         <a href="mador" type="submit"> מדור מחשוב</a>
-        <a href="madors" type="submit">מדורים</a>
+        <a name="madors">מדורים</a>
         <a href="people" type="submit">סגל</a>
         <a href="news" type="submit">חדשות</a>
-    </div><div style="background-color: transparent; height: 5.5vh;"></div>
+    </div>
+
+    <script>
+        function change_value(NValue){
+            document.querySelector("input[type='hidden']").value = NValue;
+            alert("g");
+        }
+    </script>
 </body>
 </html>

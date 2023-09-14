@@ -6,11 +6,6 @@
     <link rel="stylesheet" type="text/css" href="static/css_files/main_page_styles.css">
     <link rel="stylesheet" type="text/css" href="static/css_files/universal_styles.css">
     <link rel="icon" type="image/x-icon" href="static/ICT_symbol.png">
-    <style>
-        iframe[iframetag] {
-          border: none;
-        }
-    </style>
 </head>
 <body>
     <!--<div w3-include-html="base_page.html"></div>
@@ -43,10 +38,9 @@
         }
           w3.includeHTML();
     </script>-->
+    <iframe src="static/base_page.html" style="height:5.5vh; width:100vw; border:none; position:fixed;
+     z-index:1; display:block; padding: 0px;" title="navigation bar" id="NavigationBar" onclick="navbar_action()"></iframe>
 
-    <div id="iframeDiv">
-        <iframe src="static/base_page.html" iframetag></iframe>
-    </div>
 
     <div class="madors-display-container" id="madors-display-container"
          style="opacity: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 100%; width: 100%;
