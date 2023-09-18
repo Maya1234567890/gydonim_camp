@@ -10,6 +10,7 @@ Libraries
 from flask import Flask, render_template, redirect, url_for, request, flash, jsonify
 import asyncio
 import webbrowser
+import os
 
 # import json
 # import socket
@@ -26,6 +27,8 @@ mador_list = [["מחשוב", "it_symbol"], ["לוגיסטיקה", "logic_symbol"
               ["מטבח", "kitchen_symbol"],
               ["רבנות", "jewish_symbol"], ["שלישות", "adjutancy_symbol"], ["אבטחה ואישורים", "security_symbol"],
               ["אירועים", "event_symbol"]]
+
+people_list = []
 
 """
 Web Functions
@@ -47,6 +50,31 @@ def people_page():
     return render_template('people_page.html')
 
 
+@app.route("/news", methods=['GET'])
+def news_page():
+    return render_template('news_page.html')
+
+
+"""
+regular functions
+"""
+
+
+def add_person(name, job, sayings, email, phone, main_page_display):
+    """folder_path = "people/" + name
+    try:
+        os.mkdir(folder_path)
+    except FileExistsError:
+        # instead of print make an alert in html with a link to his page
+        print(name + " כבר קיים במערכת")
+        return
+    open(folder_path + "/job", "w").write(job)
+    open(folder_path + "/sayings", "w").write(sayings)"""
+
+    # f = open("people/file.txt", "w")
+    # f.close()
+
+
 if __name__ == '__main__':
     """
     PORT, HOST = 45002, "172.17.74.124"  # gets the host's IP manually (will be changed)
@@ -65,6 +93,7 @@ if __name__ == '__main__':
         print("Time ran out. Please try again later")
 
     else:"""
+    # add_person("אליאור גז", "מפקד מדור תקשוב", "היי אני אליאור גז", "email", "055", True)
     try:
         app.secret_key = 'super secret key'
         app.config['SESSION_TYPE'] = 'filesystem'

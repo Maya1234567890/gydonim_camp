@@ -9,43 +9,43 @@
 </head>
 <body>
     <!-- The navigation bar -->
-    <!--<div class="navigation-bar" id="navbar">
+    <div class="navigation-bar" id="navbar">
         <i style="float: right; height: 5.5vh;"><img style="height: 90%;" src="static/ICT_symbol.png"></i>
-        <a href="#" style="float: right;">בסיס גדעונים</a>
-        <a href="#"> מדור מחשוב</a>
+        <a onclick="location.reload();" style="float: right;">בסיס גדעונים</a>
+        <a href="mador"> מדור מחשוב</a>
         <a href="madors" type="submit">מדורים</a>
         <a href="people" type="submit">סגל</a>
-        <a href="#">חדשות</a>
-    </div><div style="background-color: transparent; height: 5.5vh;"></div>-->
-    <iframe src="static/base_page.html" style="height:5.5vh; width:100vw; border:none; position:fixed;
+        <a href="news" type="submit">חדשות</a>
+    </div><div style="background-color: transparent; height: 5.5vh;"></div>
+    <!--<iframe src="static/base_page.html" style="height:5.5vh; width:100vw; border:none; position:fixed;
      z-index:50; display:block; padding: 0px;" id="NavigationBar" allowfullscreen></iframe>
     <div style="background-color: black; height: 5.5vh;"></div>
-        <!--<script>
+        <script>
         const NavigationBar = document.getElementById("NavigationBar");
         window.focus();
         window.addEventListener("blur", () => {
          setTimeout(() => {
            if(document.activeElement.tagName == "IFRAME") {
-            var link = NavigationBar.contentWindow.document.querySelectorAll("a").values();
+            var link = NavigationBar.contentDocument.querySelector(".bar-option");
             alert(link[0]);
            }
          });
         });
 
-    </script>-->
+    </script>
 
     <script>
         function navbar_action(){
             alert("hi");
         }
         const NavigationBar = document.getElementById("NavigationBar");
-        var links = NavigationBar.contentWindow.document.querySelector('a').values();
+        var links = NavigationBar.contentDocument.querySelectorAll('a').values();
         alert(links[0]);
         links.forEach((a) => {
             alert("hi");
             a.addEventListener('click', navbar_action);
         });
-    </script>
+    </script>-->
 
     <!-- The articles slideshow -->
     <div id="SlideshowContainer" class="slideshow-container">

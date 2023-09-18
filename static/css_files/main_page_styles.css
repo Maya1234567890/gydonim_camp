@@ -104,6 +104,16 @@ This is needed because of the position of >> and the position of the image in th
   opacity: 1;
 }
 
+.mador_button:hover .mador_image {
+    animation: glow 1s linear infinite alternate;
+    filter: drop-shadow(0 0 0.75rem #0087ca);
+}
+@keyframes glow{
+    to{
+        filter: drop-shadow(0 0 3rem #5ddcff);
+    }
+}
+
 
 /* The articles slideshow */
 /* Position the image container (needed to position the left and right arrows) */
