@@ -11,12 +11,24 @@
     <!-- The navigation bar -->
     <div class="navigation-bar" id="navbar">
         <i style="float: right; height: 5.5vh;"><img style="height: 90%;" src="static/ICT_symbol.png"></i>
-        <a onclick="location.reload();" style="float: right;">בסיס גדעונים</a>
-        <a href="mador"> מדור מחשוב</a>
-        <a href="madors" type="submit">מדורים</a>
-        <a href="people" type="submit">סגל</a>
-        <a href="news" type="submit">חדשות</a>
+        <form action="{{ url_for('main_page', ) }}" method="post">
+            <button href="/" style="float: right;">בסיס גדעונים</button>
+        </form>
+        <form action="{{ url_for('mador_page', ) }}" method="post">
+            <input name="mador_name" type="hidden" value="מחשוב">
+            <button href="mador" type="submit"> מדור מחשוב</button>
+        </form>
+        <form action="{{ url_for('madors_page', ) }}" method="post">
+            <button href="madors" type="submit">מדורים</button>
+        </form>
+        <form action="{{ url_for('people_page', ) }}" method="post">
+            <button href="people" type="submit">סגל</button>
+        </form>
+        <form action="{{ url_for('news_page', ) }}" method="post">
+        <button href="news" type="submit">חדשות</button>
+        </form>
     </div><div style="background-color: transparent; height: 5.5vh;"></div>
+        <!--<button onclick="location.reload();" style="float: right;">בסיס גדעונים</button>-->
     <!--<iframe src="static/base_page.html" style="height:5.5vh; width:100vw; border:none; position:fixed;
      z-index:50; display:block; padding: 0px;" id="NavigationBar" allowfullscreen></iframe>
     <div style="background-color: black; height: 5.5vh;"></div>

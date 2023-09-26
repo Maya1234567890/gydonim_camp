@@ -40,19 +40,28 @@ def main_page():
     return render_template('main_page.html', mador_list=mador_list)
 
 
-@app.route("/madors", methods=['GET'])
+@app.route("/madors", methods=['POST'])
 def madors_page():
     return render_template('madors_page.html', mador_list=mador_list)
 
 
-@app.route("/people", methods=['GET'])
+@app.route("/people", methods=['POST'])
 def people_page():
     return render_template('people_page.html')
 
 
-@app.route("/news", methods=['GET'])
+@app.route("/news", methods=['POST'])
 def news_page():
     return render_template('news_page.html')
+
+
+@app.route("/mador", methods=['POST'])
+def mador_page():
+    mador_name = request.form.get('mador_name')
+    # take mador symbol from the mador list later!
+    # everything has to be dynamic, but i dont know how to store stuff... so for now it's static
+    return render_template('mador_page.html', mador_name=mador_name, mador_symbol="it_symbol",
+                           commandar="אליאור", )
 
 
 """

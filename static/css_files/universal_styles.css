@@ -18,7 +18,7 @@ body {
   /*height: 100vh;*/
 }
 /* the navigation bar options */
-.navigation-bar a{
+.navigation-bar button{
   cursor: pointer;
   float: left;
   width: 10vw;
@@ -29,12 +29,14 @@ body {
   display: inline-block;
   position: relative;
   text-decoration: none;
-  top: 25%;
-  padding: 0 0 1.4vh;
+  /*top: 25%;*/
+  padding: 1.4vh 0 1.4vh;
+  background-color: transparent;
+  border: none;
   /*padding: 0 0 0.75vw;*/
 }
 /* The navigation bar options animation */
-.navigation-bar a::after {
+.navigation-bar button::after {
   content: '';
   position: absolute;
   width: 100%;
@@ -50,7 +52,7 @@ body {
   transition: transform 0.25s ease-out;
 }
 /* implementing the animation upon hovering */
-.navigation-bar a:hover::after {
+.navigation-bar button:hover::after {
   transform: scaleX(1); /* resizing the element horizontally */
   transform-origin: bottom left; /* the start of the animation */
 }

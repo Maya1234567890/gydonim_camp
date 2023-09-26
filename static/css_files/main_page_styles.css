@@ -106,11 +106,11 @@ This is needed because of the position of >> and the position of the image in th
 
 .mador_button:hover .mador_image {
     animation: glow 1s linear infinite alternate;
-    filter: drop-shadow(0 0 0.75rem #0087ca);
+    filter: drop-shadow(0 0 0.5rem #5ddcff);
 }
 @keyframes glow{
     to{
-        filter: drop-shadow(0 0 3rem #5ddcff);
+        filter: drop-shadow(0 0 0.75rem #4c67e3);
     }
 }
 
