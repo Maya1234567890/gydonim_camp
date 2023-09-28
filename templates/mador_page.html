@@ -58,42 +58,32 @@
     .main-mador-container {
         width: 100%;
         height: 100%;
+        display: flex;
     }
 
-    /*.main-mador-content-glow, */.main-mador-content {
-        position: relative; /* why is relative not working? */
+    .main-mador-content {
+        position: absolute; /* why is relative not working? */
         display: inline;
         width: 50%;
         height: 70%;
-        right: 2vw;
-        border-radius: 5%;
+        right: 1.25%; /* width*before-left/100 */
+        border-radius: 3%;
         background-color: black;
-        white-space: normal;
     }
-
-    /*.main-mador-content-glow {
-        z-index: -2;
-        box-shadow:
-            inset 0 0 2vw #fff,
-            inset 1vw 0 4vw #f0f,
-            inset -1vw 0 4vw #0ff,
-            inset 10px 0 10vw #f0f,
-            inset -10px 0 10vw #0ff,
-            0 0 1vw #fff,
-            -0.5vw 0 4vw #f0f,
-            0.5vw 0 4vw #0ff;
-    }*/
 
     .main-mador-content::before {
       content: "";
-      width: 100%;
-      height: 100%;
-      background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+      border-radius: 3%;
+      width: 105%; /* left*2 */
+      height: 105%; /* top*2 */
+      background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3, black 43%, black);
       position: absolute;
       z-index: -1; /* makes the glowing bar stay behind the slideshow options */
-      left: 0;
-      animation: spin 2.5s linear infinite;
+      left: -2.5%;
+      top: -2.5%;
+      animation: spin 5s linear infinite;
     }
+
 
 </style>
 <body>
@@ -115,16 +105,38 @@
         <form action="{{ url_for('news_page', ) }}" method="post">
         <button href="news" type="submit">חדשות</button>
         </form>
-    </div><div style="background-color: transparent; height: 5.5vh;"></div>
+    </div><
 
     <div class="mador-header">
         <p class="mador-header-title">מדור {{mador_name}}</p>
         <img class="mador-header-image" src="static/{{ mador_symbol }}.png">
-    </div>
+    </div><div style="background-color: transparent; height: 2vh;"></div>
 
-    <div class="main-mador-container">
-        <!--<div class="main-mador-content-glow"></div>-->
+    <div id="main-mador-container" class="main-mador-container">
         <div class="main-mador-content"></div>
+        <script>
+            var Container = document.getElementById("main-mador-container");
+
+            var ContactContainer = document.createElement('div');
+            ContactContainer.classList.add('full-contact-container-settings');
+
+            var ContactColumn = document.createElement('div');
+            ContactColumn.classList.add('full-contact-container');
+
+            var front = document.createElement('div');
+            front.innerHTML = '<div class="contact-card-cover"><img src="static/placeholder.jpeg"></div>';
+
+            var back = document.createElement('div');
+            back.classList.add('contact-card');
+            var backContent = document.createElement('div');
+            backContent.innerHTML = '<div class="contact-card-info"><p>Jane Doe</p><p style="color: grey;">CEO &amp; Founder</p><p>Some text that describes me lorem ipsum ipsum lorem.</p><p>example@example.com</p><p><button class="contact-card-info-button">Contact</button></p></div>';
+
+            back.appendChild(backContent);
+            ContactColumn.appendChild(front);
+            ContactColumn.appendChild(back);
+            ContactContainer.appendChild(ContactColumn);
+            Container.appendChild(ContactContainer);
+        </script>
     </div>
 
 </body>
